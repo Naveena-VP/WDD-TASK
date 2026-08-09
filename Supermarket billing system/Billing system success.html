@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Billing Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3e8ff;
+        }
+
+        .container {
+            width: 800px;
+            max-width: 92%;
+            margin: 45px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            border-radius: 50%;
+            background: #6a1b9a;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .bill-number {
+            text-align: center;
+            background: #faf3ff;
+            padding: 15px;
+            border-radius: 7px;
+            color: #6a1b9a;
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background: #fcf9ff;
+            border: 1px solid #d8b4e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .details h2 {
+            text-align: center;
+            color: #6a1b9a;
+            border-bottom: 2px solid #d8b4e8;
+            padding-bottom: 10px;
+        }
+
+        .detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 11px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail strong {
+            color: #555;
+        }
+
+        .detail span {
+            color: #333;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #6a1b9a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #faf5ff;
+        }
+
+        .bill-summary {
+            margin-top: 10px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-row strong {
+            color: #555;
+        }
+
+        .final {
+            margin-top: 10px;
+            padding: 16px;
+            background: #6a1b9a;
+            color: white;
+            border-radius: 7px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            background: #e8f5e9;
+            color: #26734d;
+            border-radius: 7px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 13px;
+            background: #fff8e1;
+            border-left: 4px solid #d39e00;
+            color: #665500;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 28px;
+            background: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #4a116d;
+        }
+
+        @media(max-width:600px) {
+
+            .detail {
+                display: block;
+            }
+
+            .detail span {
+                display: block;
+                margin-top: 5px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            .final {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Billing Completed!
+    </h1>
+
+
+    <p class="message">
+        Customer bill has been generated successfully.
+    </p>
+
+
+    <div class="bill-number">
+
+        Bill Number:
+        <span id="billNumber"></span>
+
+    </div>
+
+
+    <!-- Customer Information -->
+
+    <div class="details">
+
+        <h2>
+            Customer Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Customer Name
+            </strong>
+
+            <span id="customerName"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Mobile Number
+            </strong>
+
+            <span id="mobile"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Bill Date
+            </strong>
+
+            <span id="billDate"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Products -->
+
+    <div class="details">
+
+        <h2>
+            Purchased Products
+        </h2>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Product
+                    </th>
+
+                    <th>
+                        Qty
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="productTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- Bill Summary -->
+
+    <div class="details">
+
+        <h2>
+            Bill Summary
+        </h2>
+
+
+        <div class="bill-summary">
+
+
+            <div class="summary-row">
+
+                <strong>
+                    Subtotal
+                </strong>
+
+                <span id="subtotal"></span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <strong>
+                    Discount
+                </strong>
+
+                <span id="discount"></span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <strong>
+                    GST (5%)
+                </strong>
+
+                <span id="gst"></span>
+
+            </div>
+
+
+            <div class="final">
+
+                <span>
+                    Final Amount
+                </span>
+
+                <span id="finalAmount"></span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="status">
+
+        ✓ Supermarket Bill Successfully Generated
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Note:</strong>
+
+        This Supermarket Billing System is created
+        for educational purposes. Discount is calculated
+        based on the subtotal and GST is calculated at 5%.
+
+    </div>
+
+
+    <button onclick="createNewBill()">
+
+        Create New Bill
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+       Get bill data
+    */
+
+    let data =
+        JSON.parse(
+            sessionStorage.getItem(
+                "supermarketBill"
+            )
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("billNumber")
+            .innerHTML =
+            data.billNumber;
+
+
+        document.getElementById("customerName")
+            .innerHTML =
+            data.customerName;
+
+
+        document.getElementById("mobile")
+            .innerHTML =
+            data.mobile;
+
+
+        document.getElementById("billDate")
+            .innerHTML =
+            data.billDate;
+
+
+        /*
+           Display Products
+        */
+
+        let table =
+            document.getElementById(
+                "productTable"
+            );
+
+
+        data.products.forEach(function(product) {
+
+
+            let row =
+                document.createElement("tr");
+
+
+            row.innerHTML =
+
+                "<td>" +
+                product.name +
+                "</td>" +
+
+                "<td>" +
+                product.quantity +
+                "</td>" +
+
+                "<td>₹" +
+                product.price.toFixed(2) +
+                "</td>" +
+
+                "<td>₹" +
+                product.amount.toFixed(2) +
+                "</td>";
+
+
+            table.appendChild(row);
+
+        });
+
+
+        /*
+           Display Summary
+        */
+
+        document.getElementById("subtotal")
+            .innerHTML =
+            "₹" +
+            data.subtotal.toFixed(2);
+
+
+        document.getElementById("discount")
+            .innerHTML =
+            data.discountRate +
+            "% (₹" +
+            data.discount.toFixed(2) +
+            ")";
+
+
+        document.getElementById("gst")
+            .innerHTML =
+            "₹" +
+            data.gst.toFixed(2);
+
+
+        document.getElementById("finalAmount")
+            .innerHTML =
+            "₹" +
+            data.finalAmount.toFixed(2);
+
+    }
+
+
+    /*
+       Create New Bill
+    */
+
+    function createNewBill() {
+
+        sessionStorage.removeItem(
+            "supermarketBill"
+        );
+
+
+        window.location.href =
+            "supermarket-billing.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
