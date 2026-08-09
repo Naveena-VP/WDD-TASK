@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Membership Registration System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f6f0;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #287c68;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #287c68;
+            border-bottom: 2px solid #b8dfd2;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #287c68;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .info {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f2faf7;
+            border-left: 4px solid #287c68;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #287c68;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1f604f;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>
+        Library Membership Registration System
+    </h1>
+
+
+    <p class="subtitle">
+        Register for library membership and access library services
+    </p>
+
+
+    <form id="libraryForm">
+
+
+        <!-- Member Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Member Information
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter full name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Member ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="memberId"
+                        placeholder="Example: LIB1001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dob"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Gender
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Contact Information
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email address"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter phone number"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                id="address"
+                placeholder="Enter your address"
+            ></textarea>
+
+
+        </div>
+
+
+        <!-- Membership Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Membership Information
+            </h2>
+
+
+            <label>
+                Membership Type
+            </label>
+
+            <select id="membership">
+
+                <option value="">
+                    Select Membership Type
+                </option>
+
+                <option value="Student">
+                    Student
+                </option>
+
+                <option value="Regular">
+                    Regular
+                </option>
+
+                <option value="Premium">
+                    Premium
+                </option>
+
+            </select>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Membership Duration
+                    </label>
+
+                    <select id="duration">
+
+                        <option value="">
+                            Select Duration
+                        </option>
+
+                        <option value="6 Months">
+                            6 Months
+                        </option>
+
+                        <option value="1 Year">
+                            1 Year
+                        </option>
+
+                        <option value="2 Years">
+                            2 Years
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Registration Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="registrationDate"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <strong>
+                    Membership Benefits
+                </strong>
+
+                <br>
+
+                Student → Up to 3 books
+
+                <br>
+
+                Regular → Up to 5 books
+
+                <br>
+
+                Premium → Up to 10 books
+
+            </div>
+
+
+        </div>
+
+
+        <button type="submit">
+            Register Membership
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("libraryForm")
+    .addEventListener("submit", function(event) {
+
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        let memberId =
+            document.getElementById("memberId")
+            .value.trim();
+
+
+        let dob =
+            document.getElementById("dob")
+            .value;
+
+
+        let gender =
+            document.getElementById("gender")
+            .value;
+
+
+        let email =
+            document.getElementById("email")
+            .value.trim();
+
+
+        let phone =
+            document.getElementById("phone")
+            .value.trim();
+
+
+        let address =
+            document.getElementById("address")
+            .value.trim();
+
+
+        let membership =
+            document.getElementById("membership")
+            .value;
+
+
+        let duration =
+            document.getElementById("duration")
+            .value;
+
+
+        let registrationDate =
+            document.getElementById("registrationDate")
+            .value;
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter full name");
+        }
+
+
+        if (memberId === "") {
+            errors.push("Enter member ID");
+        }
+
+
+        if (dob === "") {
+            errors.push("Select date of birth");
+        }
+
+
+        if (gender === "") {
+            errors.push("Select gender");
+        }
+
+
+        if (email === "") {
+            errors.push("Enter email address");
+        }
+
+
+        if (phone === "") {
+            errors.push("Enter phone number");
+        }
+
+
+        if (address === "") {
+            errors.push("Enter address");
+        }
+
+
+        if (membership === "") {
+            errors.push("Select membership type");
+        }
+
+
+        if (duration === "") {
+            errors.push("Select membership duration");
+        }
+
+
+        if (registrationDate === "") {
+            errors.push("Select registration date");
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Determine books allowed
+        */
+
+        let booksAllowed;
+
+
+        if (membership === "Student") {
+
+            booksAllowed = 3;
+
+        }
+
+        else if (membership === "Regular") {
+
+            booksAllowed = 5;
+
+        }
+
+        else {
+
+            booksAllowed = 10;
+
+        }
+
+
+        /*
+            Generate Membership Number
+        */
+
+        let membershipNumber =
+            "MEM" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        /*
+            Store registration data
+        */
+
+        let libraryData = {
+
+            name: name,
+
+            memberId: memberId,
+
+            dob: dob,
+
+            gender: gender,
+
+            email: email,
+
+            phone: phone,
+
+            address: address,
+
+            membership: membership,
+
+            duration: duration,
+
+            registrationDate: registrationDate,
+
+            membershipNumber: membershipNumber,
+
+            booksAllowed: booksAllowed,
+
+            status: "Active"
+
+        };
+
+
+        localStorage.setItem(
+
+            "libraryMembership",
+
+            JSON.stringify(libraryData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "library-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
