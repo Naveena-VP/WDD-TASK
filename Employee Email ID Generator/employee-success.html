@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Registration Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #e7f0ed;
+        }
+
+
+        .container {
+            width: 650px;
+
+            max-width: 90%;
+
+            margin: 50px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #356859;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #356859;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .details {
+            background-color: #f3f8f6;
+
+            border: 1px solid #b9d8ce;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #356859;
+
+            border-bottom: 2px solid #b9d8ce;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+        }
+
+
+        .registration-number {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            text-align: center;
+
+            background-color: #dceee7;
+
+            border-radius: 7px;
+
+            color: #356859;
+
+            font-weight: bold;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 25px;
+
+            background-color: #356859;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #254c40;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+            .detail span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Employee Registration Completed!
+    </h1>
+
+
+    <p class="message">
+        Employee information has been successfully registered.
+    </p>
+
+
+    <div class="details">
+
+
+        <h2>Employee Details</h2>
+
+
+        <div class="detail">
+
+            <strong>Employee Name</strong>
+
+            <span id="name"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Employee ID</strong>
+
+            <span id="employeeId"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Date of Birth</strong>
+
+            <span id="dob"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Gender</strong>
+
+            <span id="gender"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Email</strong>
+
+            <span id="email"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Phone Number</strong>
+
+            <span id="phone"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Address</strong>
+
+            <span id="address"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>City</strong>
+
+            <span id="city"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>State</strong>
+
+            <span id="state"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Department</strong>
+
+            <span id="department"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Designation</strong>
+
+            <span id="designation"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Joining Date</strong>
+
+            <span id="joiningDate"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Employment Type</strong>
+
+            <span id="employmentType"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="registration-number">
+
+        Employee Registration ID:
+        <span id="registrationId"></span>
+
+    </div>
+
+
+    <button onclick="goBack()">
+        Register Another Employee
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get saved employee information
+    */
+
+    let data =
+        JSON.parse(
+            localStorage.getItem(
+                "employeeInformation"
+            )
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("name")
+            .innerHTML = data.name;
+
+
+        document.getElementById("employeeId")
+            .innerHTML = data.employeeId;
+
+
+        document.getElementById("dob")
+            .innerHTML = data.dob;
+
+
+        document.getElementById("gender")
+            .innerHTML = data.gender;
+
+
+        document.getElementById("email")
+            .innerHTML = data.email;
+
+
+        document.getElementById("phone")
+            .innerHTML = data.phone;
+
+
+        document.getElementById("address")
+            .innerHTML = data.address;
+
+
+        document.getElementById("city")
+            .innerHTML = data.city;
+
+
+        document.getElementById("state")
+            .innerHTML = data.state;
+
+
+        document.getElementById("department")
+            .innerHTML = data.department;
+
+
+        document.getElementById("designation")
+            .innerHTML = data.designation;
+
+
+        document.getElementById("joiningDate")
+            .innerHTML = data.joiningDate;
+
+
+        document.getElementById("employmentType")
+            .innerHTML = data.employmentType;
+
+
+        /*
+            Generate registration number
+        */
+
+        let registrationId =
+            "EMPREG" +
+            Math.floor(
+                100000 + Math.random() * 900000
+            );
+
+
+        document.getElementById(
+            "registrationId"
+        ).innerHTML = registrationId;
+
+    }
+
+
+    /*
+        Back to registration page
+    */
+
+    function goBack() {
+
+        window.location.href =
+            "employee-information.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

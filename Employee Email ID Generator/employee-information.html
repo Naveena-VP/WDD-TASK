@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Information Portal</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e7f0ed;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #356859;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #356859;
+            border-bottom: 2px solid #b9d8ce;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #356859;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .gender {
+            display: flex;
+            gap: 30px;
+        }
+
+        .gender label {
+            font-weight: normal;
+        }
+
+        .gender input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #356859;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #254c40;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+            .gender {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <h1>Employee Information Portal</h1>
+
+    <p class="subtitle">
+        Register and manage employee information
+    </p>
+
+
+    <form id="employeeForm">
+
+
+        <!-- Personal Information -->
+
+        <div class="section">
+
+            <h2>Personal Information</h2>
+
+
+            <label>Employee Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter employee full name"
+            >
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Employee ID</label>
+
+                    <input
+                        type="text"
+                        id="employeeId"
+                        placeholder="Example: EMP1001"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>Date of Birth</label>
+
+                    <input
+                        type="date"
+                        id="dob"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>Gender</label>
+
+            <div class="gender">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                    >
+                    Male
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                    >
+                    Female
+                </label>
+
+
+                <label>
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Other"
+                    >
+                    Other
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="section">
+
+            <h2>Contact Information</h2>
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email address"
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10 digit phone number"
+            >
+
+
+            <label>Address</label>
+
+            <textarea
+                id="address"
+                placeholder="Enter employee address"
+            ></textarea>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>City</label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter city"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>State</label>
+
+                    <select id="state">
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                        <option value="Tamil Nadu">
+                            Tamil Nadu
+                        </option>
+
+                        <option value="Kerala">
+                            Kerala
+                        </option>
+
+                        <option value="Karnataka">
+                            Karnataka
+                        </option>
+
+                        <option value="Andhra Pradesh">
+                            Andhra Pradesh
+                        </option>
+
+                        <option value="Telangana">
+                            Telangana
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Job Information -->
+
+        <div class="section">
+
+            <h2>Job Information</h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Department</label>
+
+                    <select id="department">
+
+                        <option value="">
+                            Select Department
+                        </option>
+
+                        <option value="IT">
+                            IT
+                        </option>
+
+                        <option value="Human Resources">
+                            Human Resources
+                        </option>
+
+                        <option value="Finance">
+                            Finance
+                        </option>
+
+                        <option value="Marketing">
+                            Marketing
+                        </option>
+
+                        <option value="Sales">
+                            Sales
+                        </option>
+
+                        <option value="Operations">
+                            Operations
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>Designation</label>
+
+                    <select id="designation">
+
+                        <option value="">
+                            Select Designation
+                        </option>
+
+                        <option value="Software Developer">
+                            Software Developer
+                        </option>
+
+                        <option value="HR Executive">
+                            HR Executive
+                        </option>
+
+                        <option value="Accountant">
+                            Accountant
+                        </option>
+
+                        <option value="Marketing Executive">
+                            Marketing Executive
+                        </option>
+
+                        <option value="Sales Executive">
+                            Sales Executive
+                        </option>
+
+                        <option value="Manager">
+                            Manager
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Joining Date</label>
+
+                    <input
+                        type="date"
+                        id="joiningDate"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>Employment Type</label>
+
+                    <select id="employmentType">
+
+                        <option value="">
+                            Select Type
+                        </option>
+
+                        <option value="Full Time">
+                            Full Time
+                        </option>
+
+                        <option value="Part Time">
+                            Part Time
+                        </option>
+
+                        <option value="Intern">
+                            Intern
+                        </option>
+
+                        <option value="Contract">
+                            Contract
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Register Employee
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+    document.getElementById("employeeForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+        let employeeId =
+            document.getElementById("employeeId")
+            .value.trim();
+
+        let dob =
+            document.getElementById("dob")
+            .value;
+
+        let email =
+            document.getElementById("email")
+            .value.trim();
+
+        let phone =
+            document.getElementById("phone")
+            .value.trim();
+
+        let address =
+            document.getElementById("address")
+            .value.trim();
+
+        let city =
+            document.getElementById("city")
+            .value.trim();
+
+        let state =
+            document.getElementById("state")
+            .value;
+
+        let department =
+            document.getElementById("department")
+            .value;
+
+        let designation =
+            document.getElementById("designation")
+            .value;
+
+        let joiningDate =
+            document.getElementById("joiningDate")
+            .value;
+
+        let employmentType =
+            document.getElementById("employmentType")
+            .value;
+
+
+        let gender =
+            document.querySelector(
+                'input[name="gender"]:checked'
+            );
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter employee name");
+        }
+
+        if (employeeId === "") {
+            errors.push("Enter employee ID");
+        }
+
+        if (dob === "") {
+            errors.push("Select date of birth");
+        }
+
+        if (!gender) {
+            errors.push("Select gender");
+        }
+
+        if (email === "") {
+            errors.push("Enter email");
+        }
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+            errors.push("Enter valid 10 digit phone number");
+        }
+
+        if (address === "") {
+            errors.push("Enter address");
+        }
+
+        if (city === "") {
+            errors.push("Enter city");
+        }
+
+        if (state === "") {
+            errors.push("Select state");
+        }
+
+        if (department === "") {
+            errors.push("Select department");
+        }
+
+        if (designation === "") {
+            errors.push("Select designation");
+        }
+
+        if (joiningDate === "") {
+            errors.push("Select joining date");
+        }
+
+        if (employmentType === "") {
+            errors.push("Select employment type");
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+        }
+
+
+        /*
+            Store employee information
+        */
+
+        let employeeData = {
+
+            name: name,
+
+            employeeId: employeeId,
+
+            dob: dob,
+
+            gender: gender.value,
+
+            email: email,
+
+            phone: phone,
+
+            address: address,
+
+            city: city,
+
+            state: state,
+
+            department: department,
+
+            designation: designation,
+
+            joiningDate: joiningDate,
+
+            employmentType: employmentType
+
+        };
+
+
+        localStorage.setItem(
+            "employeeInformation",
+            JSON.stringify(employeeData)
+        );
+
+
+        /*
+            Open completion page
+        */
+
+        window.location.href =
+            "employee-success.html";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
