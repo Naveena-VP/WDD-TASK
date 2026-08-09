@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff3e6;
+        }
+
+
+        .container {
+            width: 750px;
+            max-width: 92%;
+
+            margin: 45px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #b85c38;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #9b4528;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .order-id {
+            text-align: center;
+
+            background-color: #fff1e9;
+
+            padding: 15px;
+
+            border-radius: 7px;
+
+            color: #9b4528;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .details {
+            background-color: #fffaf7;
+
+            border: 1px solid #f0c7b5;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #9b4528;
+
+            border-bottom: 2px solid #f0c7b5;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 11px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+
+            max-width: 60%;
+
+            word-break: break-word;
+        }
+
+
+        .order-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 15px;
+        }
+
+
+        .order-table th,
+        .order-table td {
+            padding: 11px;
+
+            border-bottom: 1px solid #ddd;
+
+            text-align: left;
+        }
+
+
+        .order-table th {
+            background-color: #fff1e9;
+
+            color: #9b4528;
+        }
+
+
+        .order-table td:last-child,
+        .order-table th:last-child {
+            text-align: right;
+        }
+
+
+        .total {
+            margin-top: 20px;
+
+            padding: 18px;
+
+            background-color: #fff1e9;
+
+            border-radius: 7px;
+
+            text-align: right;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #9b4528;
+        }
+
+
+        .status {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            text-align: center;
+
+            background-color: #e1f3e8;
+
+            color: #26734d;
+
+            border-radius: 7px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+
+        .notice {
+            margin-top: 20px;
+
+            padding: 13px;
+
+            background-color: #fff8e1;
+
+            border-left: 4px solid #d39e00;
+
+            color: #665500;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 28px;
+
+            background-color: #b85c38;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #913f25;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+
+            .detail span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+
+                max-width: 100%;
+            }
+
+
+            .order-table {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Order Placed Successfully!
+    </h1>
+
+
+    <p class="message">
+        Thank you for ordering from Spice Garden Restaurant.
+    </p>
+
+
+    <div class="order-id">
+
+        Order ID:
+        <span id="orderId"></span>
+
+    </div>
+
+
+    <!-- Customer Details -->
+
+    <div class="details">
+
+
+        <h2>
+            Order Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Customer Name
+            </strong>
+
+            <span id="customerName"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Dining Option
+            </strong>
+
+            <span id="diningOption"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Special Instructions
+            </strong>
+
+            <span id="instructions"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Ordered Items -->
+
+    <div class="details">
+
+
+        <h2>
+            Ordered Items
+        </h2>
+
+
+        <table class="order-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Item
+                    </th>
+
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="orderItems">
+
+            </tbody>
+
+
+        </table>
+
+
+        <div class="total">
+
+            Total Amount:
+            ₹<span id="total"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="status">
+
+        ✓ Order Confirmed
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Restaurant Notice:</strong>
+
+        Your order details are displayed for this
+        demonstration project. This webpage does not
+        process real payments or restaurant orders.
+
+    </div>
+
+
+    <button onclick="placeAnotherOrder()">
+
+        Place Another Order
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get order information
+        from Page 1
+    */
+
+    let data =
+        JSON.parse(
+
+            sessionStorage.getItem(
+                "restaurantOrder"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("orderId")
+            .innerHTML =
+            data.orderId;
+
+
+        document.getElementById("customerName")
+            .innerHTML =
+            data.customerName;
+
+
+        document.getElementById("diningOption")
+            .innerHTML =
+            data.diningOption;
+
+
+        document.getElementById("instructions")
+            .innerHTML =
+            data.instructions;
+
+
+        document.getElementById("total")
+            .innerHTML =
+            data.total;
+
+
+        /*
+            Display ordered items
+        */
+
+        let table =
+            document.getElementById(
+                "orderItems"
+            );
+
+
+        data.items.forEach(function(item) {
+
+
+            let row =
+                document.createElement("tr");
+
+
+            row.innerHTML =
+
+                "<td>" +
+                item.name +
+                "</td>" +
+
+                "<td>" +
+                item.quantity +
+                "</td>" +
+
+                "<td>₹" +
+                item.price +
+                "</td>" +
+
+                "<td>₹" +
+                item.itemTotal +
+                "</td>";
+
+
+            table.appendChild(row);
+
+
+        });
+
+    }
+
+
+    /*
+        Place another order
+    */
+
+    function placeAnotherOrder() {
+
+        sessionStorage.removeItem(
+            "restaurantOrder"
+        );
+
+
+        window.location.href =
+            "restaurant-menu.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

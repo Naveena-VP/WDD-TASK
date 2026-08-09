@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Menu</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff3e6;
+        }
+
+        .container {
+            width: 850px;
+            max-width: 92%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .restaurant-icon {
+            width: 75px;
+            height: 75px;
+            margin: auto;
+            background-color: #b85c38;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 75px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #9b4528;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #9b4528;
+            border-bottom: 2px solid #f0c7b5;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            box-sizing: border-box;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #b85c38;
+        }
+
+        .menu-category {
+            margin-top: 25px;
+        }
+
+        .menu-category h3 {
+            color: #b85c38;
+            background-color: #fff1e9;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px;
+            margin: 8px 0;
+            background-color: #fffaf7;
+            border: 1px solid #f0ddd4;
+            border-radius: 7px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info strong {
+            color: #333;
+        }
+
+        .item-info small {
+            display: block;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #9b4528;
+            white-space: nowrap;
+        }
+
+        .quantity {
+            width: 65px;
+            padding: 8px;
+        }
+
+        .menu-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 13px;
+            background-color: #fff5ed;
+            border-left: 4px solid #b85c38;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background-color: #b85c38;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #913f25;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .menu-item {
+                flex-wrap: wrap;
+            }
+
+            .price {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="restaurant-icon">
+        R
+    </div>
+
+
+    <h1>
+        Spice Garden Restaurant
+    </h1>
+
+
+    <p class="subtitle">
+        Delicious food • Fresh ingredients • Great taste
+    </p>
+
+
+    <form id="orderForm">
+
+
+        <!-- Customer Information -->
+
+        <div class="section">
+
+            <h2>
+                Customer Information
+            </h2>
+
+
+            <label>
+                Customer Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter customer name"
+            >
+
+
+            <label>
+                Dining Option
+            </label>
+
+            <select id="diningOption">
+
+                <option value="">
+                    Select dining option
+                </option>
+
+                <option value="Dine In">
+                    Dine In
+                </option>
+
+                <option value="Take Away">
+                    Take Away
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Food Menu -->
+
+        <div class="section">
+
+            <h2>
+                Our Menu
+            </h2>
+
+
+            <!-- Starters -->
+
+            <div class="menu-category">
+
+                <h3>
+                    Starters
+                </h3>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Paneer Tikka"
+                        data-price="180"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Paneer Tikka
+                        </strong>
+
+                        <small>
+                            Grilled paneer with spices
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹180
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Veg Spring Roll"
+                        data-price="140"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Veg Spring Roll
+                        </strong>
+
+                        <small>
+                            Crispy vegetable rolls
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹140
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Chicken 65"
+                        data-price="220"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Chicken 65
+                        </strong>
+
+                        <small>
+                            Crispy spicy chicken
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹220
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Main Course -->
+
+            <div class="menu-category">
+
+                <h3>
+                    Main Course
+                </h3>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Veg Fried Rice"
+                        data-price="180"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Veg Fried Rice
+                        </strong>
+
+                        <small>
+                            Fried rice with fresh vegetables
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹180
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Chicken Biryani"
+                        data-price="250"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Chicken Biryani
+                        </strong>
+
+                        <small>
+                            Aromatic basmati rice with chicken
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹250
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Paneer Butter Masala"
+                        data-price="210"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Paneer Butter Masala
+                        </strong>
+
+                        <small>
+                            Paneer cooked in creamy gravy
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹210
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Desserts -->
+
+            <div class="menu-category">
+
+                <h3>
+                    Desserts
+                </h3>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Gulab Jamun"
+                        data-price="90"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Gulab Jamun
+                        </strong>
+
+                        <small>
+                            Soft sweet dumplings
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹90
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <input
+                        type="checkbox"
+                        class="food"
+                        data-name="Ice Cream"
+                        data-price="100"
+                    >
+
+                    <div class="item-info">
+
+                        <strong>
+                            Ice Cream
+                        </strong>
+
+                        <small>
+                            Creamy vanilla ice cream
+                        </small>
+
+                    </div>
+
+                    <span class="price">
+                        ₹100
+                    </span>
+
+                    <input
+                        type="number"
+                        class="quantity"
+                        value="1"
+                        min="1"
+                    >
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Special Instructions -->
+
+        <div class="section">
+
+            <h2>
+                Additional Information
+            </h2>
+
+
+            <label>
+                Special Instructions
+            </label>
+
+            <textarea
+                id="instructions"
+                placeholder="Example: Less spicy, no onions, etc."
+            ></textarea>
+
+
+            <div class="info">
+
+                <strong>
+                    Order Information
+                </strong>
+
+                <br>
+
+                Select the food items you want to order
+                and specify the required quantity.
+
+                <br>
+
+                The total amount will be calculated
+                automatically.
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Place Order
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("orderForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let customerName =
+            document.getElementById("customerName")
+            .value.trim();
+
+
+        let diningOption =
+            document.getElementById("diningOption")
+            .value;
+
+
+        let instructions =
+            document.getElementById("instructions")
+            .value.trim();
+
+
+        let selectedFoods =
+            document.querySelectorAll(
+                ".food:checked"
+            );
+
+
+        let errors = [];
+
+
+        if (customerName === "") {
+
+            errors.push(
+                "Enter customer name"
+            );
+
+        }
+
+
+        if (diningOption === "") {
+
+            errors.push(
+                "Select dining option"
+            );
+
+        }
+
+
+        if (selectedFoods.length === 0) {
+
+            errors.push(
+                "Select at least one food item"
+            );
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Create order list
+        */
+
+        let orderItems = [];
+
+        let total = 0;
+
+
+        selectedFoods.forEach(function(food) {
+
+
+            let menuItem =
+                food.parentElement;
+
+
+            let quantityInput =
+                menuItem.querySelector(
+                    ".quantity"
+                );
+
+
+            let quantity =
+                Number(quantityInput.value);
+
+
+            let name =
+                food.getAttribute(
+                    "data-name"
+                );
+
+
+            let price =
+                Number(
+                    food.getAttribute(
+                        "data-price"
+                    )
+                );
+
+
+            let itemTotal =
+                price * quantity;
+
+
+            total += itemTotal;
+
+
+            orderItems.push({
+
+                name: name,
+
+                price: price,
+
+                quantity: quantity,
+
+                itemTotal: itemTotal
+
+            });
+
+
+        });
+
+
+        /*
+            Generate Order ID
+        */
+
+        let orderId =
+            "ORD" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        /*
+            Store order information
+        */
+
+        let orderData = {
+
+            orderId:
+                orderId,
+
+            customerName:
+                customerName,
+
+            diningOption:
+                diningOption,
+
+            instructions:
+                instructions === ""
+                    ? "No special instructions"
+                    : instructions,
+
+            items:
+                orderItems,
+
+            total:
+                total,
+
+            status:
+                "Order Placed"
+
+        };
+
+
+        sessionStorage.setItem(
+
+            "restaurantOrder",
+
+            JSON.stringify(orderData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "restaurant-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
