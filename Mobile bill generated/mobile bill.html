@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Bill Generator</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f1fa;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #183b56;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #183b56;
+            border-bottom: 2px solid #b8d4e8;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #183b56;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .info {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f1f7fc;
+            border-left: 4px solid #183b56;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #183b56;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #102b40;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>
+        Mobile Bill Generator
+    </h1>
+
+
+    <p class="subtitle">
+        Enter customer and mobile usage details to generate the bill
+    </p>
+
+
+    <form id="mobileForm">
+
+
+        <!-- Customer Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Customer Information
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Customer Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter customer name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Customer ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerId"
+                        placeholder="Example: CUST1001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter mobile number"
+                        maxlength="10"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Billing Month
+                    </label>
+
+                    <input
+                        type="month"
+                        id="month"
+                    >
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Plan Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Mobile Plan Information
+            </h2>
+
+
+            <label>
+                Plan Type
+            </label>
+
+            <select id="plan">
+
+                <option value="">
+                    Select Plan
+                </option>
+
+                <option value="Basic">
+                    Basic Plan - ₹199
+                </option>
+
+                <option value="Standard">
+                    Standard Plan - ₹399
+                </option>
+
+                <option value="Premium">
+                    Premium Plan - ₹599
+                </option>
+
+            </select>
+
+
+            <div class="info">
+
+                <strong>
+                    Available Plans
+                </strong>
+
+                <br>
+
+                Basic Plan → ₹199 per month
+
+                <br>
+
+                Standard Plan → ₹399 per month
+
+                <br>
+
+                Premium Plan → ₹599 per month
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Usage Details -->
+
+        <div class="section">
+
+
+            <h2>
+                Usage Details
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Call Minutes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="calls"
+                        placeholder="Enter call minutes"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        SMS Count
+                    </label>
+
+                    <input
+                        type="number"
+                        id="sms"
+                        placeholder="Enter SMS count"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Data Usage (GB)
+            </label>
+
+            <input
+                type="number"
+                id="data"
+                placeholder="Enter data used in GB"
+                min="0"
+                step="0.1"
+            >
+
+
+            <div class="info">
+
+                <strong>
+                    Usage Charges
+                </strong>
+
+                <br>
+
+                Call → ₹0.50 per minute
+
+                <br>
+
+                SMS → ₹0.25 per SMS
+
+                <br>
+
+                Data → ₹10 per GB
+
+            </div>
+
+
+        </div>
+
+
+        <button type="submit">
+            Generate Bill
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("mobileForm")
+    .addEventListener("submit", function(event) {
+
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        let customerId =
+            document.getElementById("customerId")
+            .value.trim();
+
+
+        let mobile =
+            document.getElementById("mobile")
+            .value.trim();
+
+
+        let month =
+            document.getElementById("month")
+            .value;
+
+
+        let plan =
+            document.getElementById("plan")
+            .value;
+
+
+        let calls =
+            Number(
+                document.getElementById("calls")
+                .value
+            );
+
+
+        let sms =
+            Number(
+                document.getElementById("sms")
+                .value
+            );
+
+
+        let data =
+            Number(
+                document.getElementById("data")
+                .value
+            );
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter customer name");
+        }
+
+
+        if (customerId === "") {
+            errors.push("Enter customer ID");
+        }
+
+
+        if (
+            mobile === "" ||
+            !/^[0-9]{10}$/.test(mobile)
+        ) {
+
+            errors.push(
+                "Enter a valid 10-digit mobile number"
+            );
+
+        }
+
+
+        if (month === "") {
+            errors.push("Select billing month");
+        }
+
+
+        if (plan === "") {
+            errors.push("Select a mobile plan");
+        }
+
+
+        if (
+            document.getElementById("calls").value === "" ||
+            calls < 0
+        ) {
+
+            errors.push(
+                "Enter valid call minutes"
+            );
+
+        }
+
+
+        if (
+            document.getElementById("sms").value === "" ||
+            sms < 0
+        ) {
+
+            errors.push(
+                "Enter valid SMS count"
+            );
+
+        }
+
+
+        if (
+            document.getElementById("data").value === "" ||
+            data < 0
+        ) {
+
+            errors.push(
+                "Enter valid data usage"
+            );
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Plan Charges
+        */
+
+        let baseCharge;
+
+
+        if (plan === "Basic") {
+
+            baseCharge = 199;
+
+        }
+
+        else if (plan === "Standard") {
+
+            baseCharge = 399;
+
+        }
+
+        else {
+
+            baseCharge = 599;
+
+        }
+
+
+        /*
+            Usage Charges
+        */
+
+        let callCharge =
+            calls * 0.50;
+
+
+        let smsCharge =
+            sms * 0.25;
+
+
+        let dataCharge =
+            data * 10;
+
+
+        let usageCharge =
+            callCharge +
+            smsCharge +
+            dataCharge;
+
+
+        /*
+            Subtotal
+        */
+
+        let subtotal =
+            baseCharge +
+            usageCharge;
+
+
+        /*
+            GST 18%
+        */
+
+        let tax =
+            subtotal * 0.18;
+
+
+        /*
+            Final Bill
+        */
+
+        let total =
+            subtotal + tax;
+
+
+        /*
+            Generate Bill Number
+        */
+
+        let billNumber =
+            "BILL" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        /*
+            Convert Month
+            to readable format
+        */
+
+        let monthDate =
+            new Date(month + "-01");
+
+
+        let monthName =
+            monthDate.toLocaleString(
+                "en-US",
+                {
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+
+        /*
+            Store bill data
+        */
+
+        let billData = {
+
+            name: name,
+
+            customerId: customerId,
+
+            mobile: mobile,
+
+            month: monthName,
+
+            plan: plan,
+
+            calls: calls,
+
+            sms: sms,
+
+            data: data,
+
+            baseCharge:
+                baseCharge.toFixed(2),
+
+            callCharge:
+                callCharge.toFixed(2),
+
+            smsCharge:
+                smsCharge.toFixed(2),
+
+            dataCharge:
+                dataCharge.toFixed(2),
+
+            usageCharge:
+                usageCharge.toFixed(2),
+
+            subtotal:
+                subtotal.toFixed(2),
+
+            tax:
+                tax.toFixed(2),
+
+            total:
+                total.toFixed(2),
+
+            billNumber:
+                billNumber
+
+        };
+
+
+        localStorage.setItem(
+
+            "mobileBill",
+
+            JSON.stringify(billData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "mobile-bill-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
