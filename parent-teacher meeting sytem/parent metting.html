@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Parent–Teacher Meeting Registration System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eee9ff;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #51418a;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #51418a;
+            border-bottom: 2px solid #d4cdf2;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #51418a;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .info {
+            margin-top: 15px;
+            padding: 13px;
+            background-color: #f5f2ff;
+            border-left: 4px solid #51418a;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 13px 30px;
+            background-color: #51418a;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e326d;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>
+        Parent–Teacher Meeting Registration
+    </h1>
+
+
+    <p class="subtitle">
+        Register for a parent–teacher meeting
+    </p>
+
+
+    <form id="meetingForm">
+
+
+        <!-- Parent Information -->
+
+        <div class="section">
+
+            <h2>
+                Parent Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Parent Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="parentName"
+                        placeholder="Enter parent name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter 10-digit phone number"
+                        maxlength="10"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Parent Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email address"
+            >
+
+        </div>
+
+
+        <!-- Student Information -->
+
+        <div class="section">
+
+            <h2>
+                Student Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter student name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentId"
+                        placeholder="Example: STU1001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Class
+                    </label>
+
+                    <select id="studentClass">
+
+                        <option value="">
+                            Select Class
+                        </option>
+
+                        <option value="6">
+                            Class 6
+                        </option>
+
+                        <option value="7">
+                            Class 7
+                        </option>
+
+                        <option value="8">
+                            Class 8
+                        </option>
+
+                        <option value="9">
+                            Class 9
+                        </option>
+
+                        <option value="10">
+                            Class 10
+                        </option>
+
+                        <option value="11">
+                            Class 11
+                        </option>
+
+                        <option value="12">
+                            Class 12
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Section
+                    </label>
+
+                    <select id="section">
+
+                        <option value="">
+                            Select Section
+                        </option>
+
+                        <option value="A">
+                            A
+                        </option>
+
+                        <option value="B">
+                            B
+                        </option>
+
+                        <option value="C">
+                            C
+                        </option>
+
+                        <option value="D">
+                            D
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Meeting Information -->
+
+        <div class="section">
+
+            <h2>
+                Meeting Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Meeting Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="meetingDate"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Meeting Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="meetingTime"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Meeting Mode
+            </label>
+
+            <select id="meetingMode">
+
+                <option value="">
+                    Select Meeting Mode
+                </option>
+
+                <option value="In Person">
+                    In Person
+                </option>
+
+                <option value="Online">
+                    Online
+                </option>
+
+            </select>
+
+
+            <label>
+                Discussion Topic
+            </label>
+
+            <textarea
+                id="topic"
+                placeholder="Enter the topic to discuss with the teacher"
+            ></textarea>
+
+
+            <div class="info">
+
+                <strong>
+                    Meeting Guidelines
+                </strong>
+
+                <br>
+
+                Please arrive a few minutes before the scheduled meeting.
+
+                <br>
+
+                Bring any required academic documents or notes.
+
+                <br>
+
+                For online meetings, ensure a stable internet connection.
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Register Meeting
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("meetingForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let parentName =
+            document.getElementById("parentName")
+            .value.trim();
+
+
+        let phone =
+            document.getElementById("phone")
+            .value.trim();
+
+
+        let email =
+            document.getElementById("email")
+            .value.trim();
+
+
+        let studentName =
+            document.getElementById("studentName")
+            .value.trim();
+
+
+        let studentId =
+            document.getElementById("studentId")
+            .value.trim();
+
+
+        let studentClass =
+            document.getElementById("studentClass")
+            .value;
+
+
+        let section =
+            document.getElementById("section")
+            .value;
+
+
+        let meetingDate =
+            document.getElementById("meetingDate")
+            .value;
+
+
+        let meetingTime =
+            document.getElementById("meetingTime")
+            .value;
+
+
+        let meetingMode =
+            document.getElementById("meetingMode")
+            .value;
+
+
+        let topic =
+            document.getElementById("topic")
+            .value.trim();
+
+
+        let errors = [];
+
+
+        if (parentName === "") {
+
+            errors.push("Enter parent name");
+
+        }
+
+
+        if (
+            phone === "" ||
+            !/^[0-9]{10}$/.test(phone)
+        ) {
+
+            errors.push(
+                "Enter a valid 10-digit phone number"
+            );
+
+        }
+
+
+        if (
+            email === "" ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        ) {
+
+            errors.push(
+                "Enter a valid email address"
+            );
+
+        }
+
+
+        if (studentName === "") {
+
+            errors.push("Enter student name");
+
+        }
+
+
+        if (studentId === "") {
+
+            errors.push("Enter student ID");
+
+        }
+
+
+        if (studentClass === "") {
+
+            errors.push("Select student class");
+
+        }
+
+
+        if (section === "") {
+
+            errors.push("Select section");
+
+        }
+
+
+        if (meetingDate === "") {
+
+            errors.push("Select meeting date");
+
+        }
+
+
+        if (meetingTime === "") {
+
+            errors.push("Select meeting time");
+
+        }
+
+
+        if (meetingMode === "") {
+
+            errors.push("Select meeting mode");
+
+        }
+
+
+        if (topic === "") {
+
+            errors.push("Enter discussion topic");
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Generate Meeting ID
+        */
+
+        let meetingId =
+            "PTM" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        /*
+            Format date
+        */
+
+        let dateObject =
+            new Date(meetingDate);
+
+
+        let formattedDate =
+            dateObject.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+
+        /*
+            Store registration data
+        */
+
+        let meetingData = {
+
+            meetingId: meetingId,
+
+            parentName: parentName,
+
+            phone: phone,
+
+            email: email,
+
+            studentName: studentName,
+
+            studentId: studentId,
+
+            studentClass: studentClass,
+
+            section: section,
+
+            meetingDate: formattedDate,
+
+            meetingTime: meetingTime,
+
+            meetingMode: meetingMode,
+
+            topic: topic,
+
+            status: "Registered"
+
+        };
+
+
+        localStorage.setItem(
+
+            "parentTeacherMeeting",
+
+            JSON.stringify(meetingData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "parent-teacher-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
