@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #dff5f0;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #00796b;
+            border-bottom: 2px solid #b2dfdb;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .subjects {
+            background-color: #eefaf8;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .subjects label {
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .subjects input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .registration-type {
+            display: flex;
+            gap: 25px;
+        }
+
+        .registration-type label {
+            font-weight: normal;
+        }
+
+        .registration-type input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 11px 28px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005a50;
+        }
+
+        .error {
+            color: #d32f2f;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+            .registration-type {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Course Registration System</h1>
+
+    <p class="subtitle">
+        Register for your preferred course and subjects
+    </p>
+
+
+    <form id="registrationForm">
+
+
+        <!-- Student Information -->
+
+        <div class="section">
+
+            <h2>Student Information</h2>
+
+            <label>Student Name</label>
+
+            <input type="text"
+                   id="name"
+                   placeholder="Enter student name">
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Student ID</label>
+
+                    <input type="text"
+                           id="studentId"
+                           placeholder="Enter student ID">
+
+                </div>
+
+
+                <div>
+
+                    <label>Email</label>
+
+                    <input type="email"
+                           id="email"
+                           placeholder="Enter email">
+
+                </div>
+
+            </div>
+
+
+            <label>Phone Number</label>
+
+            <input type="tel"
+                   id="phone"
+                   placeholder="Enter 10 digit phone number">
+
+        </div>
+
+
+        <!-- Course Information -->
+
+        <div class="section">
+
+            <h2>Course Information</h2>
+
+
+            <label>Department</label>
+
+            <select id="department">
+
+                <option value="">
+                    Select Department
+                </option>
+
+                <option value="Computer Science">
+                    Computer Science
+                </option>
+
+                <option value="Commerce">
+                    Commerce
+                </option>
+
+                <option value="Business Administration">
+                    Business Administration
+                </option>
+
+                <option value="English">
+                    English
+                </option>
+
+            </select>
+
+
+            <label>Course</label>
+
+            <select id="course">
+
+                <option value="">
+                    Select Course
+                </option>
+
+                <option value="B.Sc Computer Science">
+                    B.Sc Computer Science
+                </option>
+
+                <option value="BCA">
+                    BCA
+                </option>
+
+                <option value="B.Com">
+                    B.Com
+                </option>
+
+                <option value="BBA">
+                    BBA
+                </option>
+
+                <option value="BA English">
+                    BA English
+                </option>
+
+            </select>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Year</label>
+
+                    <select id="year">
+
+                        <option value="">
+                            Select Year
+                        </option>
+
+                        <option value="1st Year">
+                            1st Year
+                        </option>
+
+                        <option value="2nd Year">
+                            2nd Year
+                        </option>
+
+                        <option value="3rd Year">
+                            3rd Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>Semester</label>
+
+                    <select id="semester">
+
+                        <option value="">
+                            Select Semester
+                        </option>
+
+                        <option value="Semester 1">
+                            Semester 1
+                        </option>
+
+                        <option value="Semester 2">
+                            Semester 2
+                        </option>
+
+                        <option value="Semester 3">
+                            Semester 3
+                        </option>
+
+                        <option value="Semester 4">
+                            Semester 4
+                        </option>
+
+                        <option value="Semester 5">
+                            Semester 5
+                        </option>
+
+                        <option value="Semester 6">
+                            Semester 6
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Subject Selection -->
+
+        <div class="section">
+
+            <h2>Select Subjects</h2>
+
+            <div class="subjects">
+
+                <label>
+                    <input type="checkbox"
+                           name="subject"
+                           value="Java Programming">
+                    Java Programming
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           name="subject"
+                           value="Python Programming">
+                    Python Programming
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           name="subject"
+                           value="Database Management System">
+                    Database Management System
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           name="subject"
+                           value="Web Development">
+                    Web Development
+                </label>
+
+                <label>
+                    <input type="checkbox"
+                           name="subject"
+                           value="Data Structures">
+                    Data Structures
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- Registration Type -->
+
+        <div class="section">
+
+            <h2>Registration Type</h2>
+
+            <div class="registration-type">
+
+                <label>
+                    <input type="radio"
+                           name="registration"
+                           value="Regular">
+                    Regular
+                </label>
+
+                <label>
+                    <input type="radio"
+                           name="registration"
+                           value="Re-Registration">
+                    Re-Registration
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Register Course
+        </button>
+
+    </form>
+
+
+    <div id="errorMessage"></div>
+
+</div>
+
+
+<script>
+
+    document.getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name").value.trim();
+
+        let studentId =
+            document.getElementById("studentId").value.trim();
+
+        let email =
+            document.getElementById("email").value.trim();
+
+        let phone =
+            document.getElementById("phone").value.trim();
+
+        let department =
+            document.getElementById("department").value;
+
+        let course =
+            document.getElementById("course").value;
+
+        let year =
+            document.getElementById("year").value;
+
+        let semester =
+            document.getElementById("semester").value;
+
+
+        let registration =
+            document.querySelector(
+                'input[name="registration"]:checked'
+            );
+
+
+        let subjects =
+            document.querySelectorAll(
+                'input[name="subject"]:checked'
+            );
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter student name");
+        }
+
+        if (studentId === "") {
+            errors.push("Enter student ID");
+        }
+
+        if (email === "") {
+            errors.push("Enter email");
+        }
+
+        if (phone.length !== 10) {
+            errors.push("Enter valid 10 digit phone number");
+        }
+
+        if (department === "") {
+            errors.push("Select department");
+        }
+
+        if (course === "") {
+            errors.push("Select course");
+        }
+
+        if (year === "") {
+            errors.push("Select year");
+        }
+
+        if (semester === "") {
+            errors.push("Select semester");
+        }
+
+        if (subjects.length === 0) {
+            errors.push("Select at least one subject");
+        }
+
+        if (!registration) {
+            errors.push("Select registration type");
+        }
+
+
+        if (errors.length > 0) {
+
+            document.getElementById("errorMessage").className =
+                "error";
+
+            document.getElementById("errorMessage").innerHTML =
+                "Registration Failed<br><br>" +
+                errors.join("<br>");
+
+            return;
+        }
+
+
+        // Store student information
+
+        let subjectList = [];
+
+        subjects.forEach(function(subject) {
+            subjectList.push(subject.value);
+        });
+
+
+        let studentData = {
+
+            name: name,
+
+            studentId: studentId,
+
+            email: email,
+
+            phone: phone,
+
+            department: department,
+
+            course: course,
+
+            year: year,
+
+            semester: semester,
+
+            registrationType: registration.value,
+
+            subjects: subjectList
+
+        };
+
+
+        localStorage.setItem(
+            "courseRegistration",
+            JSON.stringify(studentData)
+        );
+
+
+        // Go to completion page
+
+        window.location.href =
+            "registration-success.html";
+
+    });
+
+</script>
+
+</body>
+</html>
