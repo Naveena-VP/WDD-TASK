@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f3ff;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 92%;
+            margin: 45px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            border-radius: 50%;
+            background-color: #2467a8;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2467a8;
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .profile-id {
+            text-align: center;
+            background-color: #eef6fd;
+            padding: 15px;
+            border-radius: 7px;
+            color: #2467a8;
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background-color: #f8fbfe;
+            border: 1px solid #c5dcef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .details h2 {
+            text-align: center;
+            color: #2467a8;
+            border-bottom: 2px solid #c5dcef;
+            padding-bottom: 10px;
+        }
+
+        .detail {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 11px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail strong {
+            color: #555;
+        }
+
+        .detail span {
+            text-align: right;
+            color: #333;
+            font-weight: 500;
+            max-width: 60%;
+            word-break: break-word;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            background-color: #e1f3e8;
+            color: #26734d;
+            border-radius: 7px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 13px;
+            background-color: #fff8e1;
+            border-left: 4px solid #d39e00;
+            color: #665500;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 28px;
+            background-color: #2467a8;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #194e80;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+            .detail span {
+                display: block;
+                text-align: left;
+                margin-top: 5px;
+                max-width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Student Profile Created!
+    </h1>
+
+
+    <p class="message">
+        Student profile has been created successfully.
+    </p>
+
+
+    <div class="profile-id">
+
+        Profile ID:
+        <span id="profileId"></span>
+
+    </div>
+
+
+    <!-- Personal Information -->
+
+    <div class="details">
+
+
+        <h2>
+            Personal Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Student Name
+            </strong>
+
+            <span id="studentName"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Student ID
+            </strong>
+
+            <span id="studentId"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Date of Birth
+            </strong>
+
+            <span id="dob"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Age
+            </strong>
+
+            <span id="age"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Gender
+            </strong>
+
+            <span id="gender"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Academic Information -->
+
+    <div class="details">
+
+
+        <h2>
+            Academic Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Department
+            </strong>
+
+            <span id="department"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Year of Study
+            </strong>
+
+            <span id="year"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Academic Performance
+            </strong>
+
+            <span id="performance"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Contact Information -->
+
+    <div class="details">
+
+
+        <h2>
+            Contact Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Email Address
+            </strong>
+
+            <span id="email"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Phone Number
+            </strong>
+
+            <span id="phone"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Address
+            </strong>
+
+            <span id="address"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Guardian Information -->
+
+    <div class="details">
+
+
+        <h2>
+            Guardian Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Guardian Name
+            </strong>
+
+            <span id="guardianName"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Guardian Phone
+            </strong>
+
+            <span id="guardianPhone"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="status">
+
+        ✓ Student Profile Successfully Created
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Note:</strong>
+
+        This Student Profile Web Page is created for
+        educational purposes. The information is stored
+        temporarily in the browser for this demonstration.
+
+    </div>
+
+
+    <button onclick="createAnotherProfile()">
+
+        Create Another Profile
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get student data
+        from Page 1
+    */
+
+    let data =
+        JSON.parse(
+
+            sessionStorage.getItem(
+                "studentProfile"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("profileId")
+            .innerHTML =
+            data.profileId;
+
+
+        document.getElementById("studentName")
+            .innerHTML =
+            data.studentName;
+
+
+        document.getElementById("studentId")
+            .innerHTML =
+            data.studentId;
+
+
+        document.getElementById("dob")
+            .innerHTML =
+            data.dob;
+
+
+        document.getElementById("age")
+            .innerHTML =
+            data.age + " years";
+
+
+        document.getElementById("gender")
+            .innerHTML =
+            data.gender;
+
+
+        document.getElementById("department")
+            .innerHTML =
+            data.department;
+
+
+        document.getElementById("year")
+            .innerHTML =
+            data.year;
+
+
+        document.getElementById("performance")
+            .innerHTML =
+            data.performance;
+
+
+        document.getElementById("email")
+            .innerHTML =
+            data.email;
+
+
+        document.getElementById("phone")
+            .innerHTML =
+            data.phone;
+
+
+        document.getElementById("address")
+            .innerHTML =
+            data.address;
+
+
+        document.getElementById("guardianName")
+            .innerHTML =
+            data.guardianName;
+
+
+        document.getElementById("guardianPhone")
+            .innerHTML =
+            data.guardianPhone;
+
+    }
+
+
+    /*
+        Create another profile
+    */
+
+    function createAnotherProfile() {
+
+        sessionStorage.removeItem(
+            "studentProfile"
+        );
+
+
+        window.location.href =
+            "student-profile.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
