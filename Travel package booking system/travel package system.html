@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Travel Package Booking System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e6f7f5;
+        }
+
+        .container {
+            width: 800px;
+            max-width: 92%;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            width: 75px;
+            height: 75px;
+            margin: auto;
+            background: #00897b;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00897b;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #00897b;
+            border-bottom: 2px solid #b2dfdb;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #00897b;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .package-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #effaf8;
+            border-left: 4px solid #00897b;
+            color: #555;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 13px;
+            background: #effaf8;
+            border-left: 4px solid #00897b;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 7px;
+            background: #00897b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00695c;
+        }
+
+        #error {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            line-height: 1.7;
+        }
+
+        @media(max-width:600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="icon">
+        ✈
+    </div>
+
+
+    <h1>
+        Travel Package Booking System
+    </h1>
+
+
+    <p class="subtitle">
+        Book your favourite travel package easily
+    </p>
+
+
+    <form id="bookingForm">
+
+
+        <!-- Traveller Information -->
+
+        <div class="section">
+
+            <h2>
+                Traveller Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Traveller Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="travellerName"
+                        placeholder="Enter traveller name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter mobile number"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email address"
+            >
+
+        </div>
+
+
+        <!-- Travel Details -->
+
+        <div class="section">
+
+            <h2>
+                Travel Details
+            </h2>
+
+
+            <label>
+                Select Destination
+            </label>
+
+            <select id="package"
+                    onchange="showPackage()">
+
+                <option value="">
+                    Select Travel Package
+                </option>
+
+                <option value="Goa">
+                    Goa Beach Package
+                </option>
+
+                <option value="Ooty">
+                    Ooty Hill Station Package
+                </option>
+
+                <option value="Manali">
+                    Manali Adventure Package
+                </option>
+
+                <option value="Kerala">
+                    Kerala Backwater Package
+                </option>
+
+                <option value="Rajasthan">
+                    Rajasthan Heritage Package
+                </option>
+
+            </select>
+
+
+            <div id="packageInfo"
+                 class="package-info">
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Travel Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="travelDate"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Number of Travellers
+                    </label>
+
+                    <input
+                        type="number"
+                        id="travellers"
+                        min="1"
+                        max="20"
+                        placeholder="Enter number"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Travel Type
+            </label>
+
+            <select id="travelType">
+
+                <option value="">
+                    Select Travel Type
+                </option>
+
+                <option>
+                    Family Trip
+                </option>
+
+                <option>
+                    Friends Trip
+                </option>
+
+                <option>
+                    Couple Trip
+                </option>
+
+                <option>
+                    Solo Trip
+                </option>
+
+            </select>
+
+
+            <label>
+                Accommodation
+            </label>
+
+            <select id="accommodation">
+
+                <option value="">
+                    Select Accommodation
+                </option>
+
+                <option>
+                    Standard Hotel
+                </option>
+
+                <option>
+                    Deluxe Hotel
+                </option>
+
+                <option>
+                    Premium Resort
+                </option>
+
+            </select>
+
+
+            <div class="info">
+
+                <strong>
+                    Booking Information
+                </strong>
+
+                <br>
+
+                Select a package, travel date and number
+                of travellers. The total package amount
+                will be calculated automatically.
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Book Travel Package
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+/*
+    Package Details
+*/
+
+const packages = {
+
+    Goa: {
+        name: "Goa Beach Package",
+        duration: "4 Days / 3 Nights",
+        price: 12000
+    },
+
+    Ooty: {
+        name: "Ooty Hill Station Package",
+        duration: "3 Days / 2 Nights",
+        price: 9000
+    },
+
+    Manali: {
+        name: "Manali Adventure Package",
+        duration: "5 Days / 4 Nights",
+        price: 18000
+    },
+
+    Kerala: {
+        name: "Kerala Backwater Package",
+        duration: "4 Days / 3 Nights",
+        price: 15000
+    },
+
+    Rajasthan: {
+        name: "Rajasthan Heritage Package",
+        duration: "5 Days / 4 Nights",
+        price: 20000
+    }
+
+};
+
+
+/*
+    Show Package Information
+*/
+
+function showPackage() {
+
+    let selected =
+        document.getElementById("package").value;
+
+    let info =
+        document.getElementById("packageInfo");
+
+
+    if (selected === "") {
+
+        info.style.display = "none";
+
+        return;
+
+    }
+
+
+    let data =
+        packages[selected];
+
+
+    info.style.display = "block";
+
+
+    info.innerHTML =
+
+        "<strong>" +
+        data.name +
+        "</strong><br>" +
+
+        "Duration: " +
+        data.duration +
+        "<br>" +
+
+        "Price per person: ₹" +
+        data.price.toLocaleString("en-IN");
+
+}
+
+
+/*
+    Form Submission
+*/
+
+document.getElementById("bookingForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    let travellerName =
+        document.getElementById("travellerName")
+        .value.trim();
+
+
+    let mobile =
+        document.getElementById("mobile")
+        .value.trim();
+
+
+    let email =
+        document.getElementById("email")
+        .value.trim();
+
+
+    let packageName =
+        document.getElementById("package")
+        .value;
+
+
+    let travelDate =
+        document.getElementById("travelDate")
+        .value;
+
+
+    let travellers =
+        Number(
+            document.getElementById("travellers")
+            .value
+        );
+
+
+    let travelType =
+        document.getElementById("travelType")
+        .value;
+
+
+    let accommodation =
+        document.getElementById("accommodation")
+        .value;
+
+
+    let errors = [];
+
+
+    if (travellerName === "") {
+
+        errors.push(
+            "Enter traveller name"
+        );
+
+    }
+
+
+    if (mobile === "") {
+
+        errors.push(
+            "Enter mobile number"
+        );
+
+    }
+
+
+    if (email === "") {
+
+        errors.push(
+            "Enter email address"
+        );
+
+    }
+
+
+    if (packageName === "") {
+
+        errors.push(
+            "Select a travel package"
+        );
+
+    }
+
+
+    if (travelDate === "") {
+
+        errors.push(
+            "Select travel date"
+        );
+
+    }
+
+
+    if (
+        travellers <= 0 ||
+        travellers > 20
+    ) {
+
+        errors.push(
+            "Enter number of travellers between 1 and 20"
+        );
+
+    }
+
+
+    if (travelType === "") {
+
+        errors.push(
+            "Select travel type"
+        );
+
+    }
+
+
+    if (accommodation === "") {
+
+        errors.push(
+            "Select accommodation"
+        );
+
+    }
+
+
+    let errorBox =
+        document.getElementById("error");
+
+
+    if (errors.length > 0) {
+
+        errorBox.style.display = "block";
+
+        errorBox.innerHTML =
+            "<strong>Please correct the following:</strong>" +
+            "<br><br>" +
+            errors.join("<br>");
+
+        return;
+
+    }
+
+
+    errorBox.style.display = "none";
+
+
+    /*
+        Calculate Package Cost
+    */
+
+    let packageData =
+        packages[packageName];
+
+
+    let packageCost =
+        packageData.price *
+        travellers;
+
+
+    /*
+        Accommodation Charges
+
+        Standard = 0
+        Deluxe = ₹2000 per person
+        Premium = ₹4000 per person
+    */
+
+    let accommodationCost = 0;
+
+
+    if (accommodation === "Deluxe Hotel") {
+
+        accommodationCost =
+            2000 * travellers;
+
+    }
+    else if (
+        accommodation === "Premium Resort"
+    ) {
+
+        accommodationCost =
+            4000 * travellers;
+
+    }
+
+
+    /*
+        GST = 5%
+    */
+
+    let subtotal =
+        packageCost +
+        accommodationCost;
+
+
+    let gst =
+        subtotal * 5 / 100;
+
+
+    let totalAmount =
+        subtotal + gst;
+
+
+    /*
+        Generate Booking ID
+    */
+
+    let bookingId =
+        "TRV" +
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+    /*
+        Store Booking Data
+    */
+
+    let bookingData = {
+
+        bookingId:
+            bookingId,
+
+        travellerName:
+            travellerName,
+
+        mobile:
+            mobile,
+
+        email:
+            email,
+
+        packageName:
+            packageData.name,
+
+        destination:
+            packageName,
+
+        duration:
+            packageData.duration,
+
+        travelDate:
+            travelDate,
+
+        travellers:
+            travellers,
+
+        travelType:
+            travelType,
+
+        accommodation:
+            accommodation,
+
+        packageCost:
+            packageCost,
+
+        accommodationCost:
+            accommodationCost,
+
+        subtotal:
+            subtotal,
+
+        gst:
+            gst,
+
+        totalAmount:
+            totalAmount
+
+    };
+
+
+    sessionStorage.setItem(
+        "travelBooking",
+        JSON.stringify(bookingData)
+    );
+
+
+    /*
+        Move to Page 2
+    */
+
+    window.location.href =
+        "travel-booking-success.html";
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
