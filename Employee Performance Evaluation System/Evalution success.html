@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Evaluation Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #eeeaf7;
+        }
+
+
+        .container {
+            width: 700px;
+
+            max-width: 90%;
+
+            margin: 50px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #654b8c;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #654b8c;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .details {
+            background-color: #f7f4fb;
+
+            border: 1px solid #d5c9e8;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #654b8c;
+
+            border-bottom: 2px solid #d5c9e8;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+        }
+
+
+        .score-box {
+            margin-top: 20px;
+
+            display: flex;
+
+            gap: 15px;
+        }
+
+
+        .score {
+            flex: 1;
+
+            text-align: center;
+
+            padding: 15px;
+
+            background-color: #eee8f8;
+
+            border-radius: 8px;
+        }
+
+
+        .score h3 {
+            margin: 5px;
+
+            color: #654b8c;
+        }
+
+
+        .score p {
+            font-size: 24px;
+
+            font-weight: bold;
+
+            margin: 8px;
+
+            color: #4e396d;
+        }
+
+
+        .comments {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background-color: #faf8fd;
+
+            border-left: 4px solid #654b8c;
+
+            line-height: 1.6;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 25px;
+
+            background-color: #654b8c;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #4e396d;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+
+            .detail span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+            }
+
+
+            .score-box {
+                display: block;
+            }
+
+
+            .score {
+                margin-bottom: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Evaluation Completed!
+    </h1>
+
+
+    <p class="message">
+        Employee performance evaluation has been submitted successfully.
+    </p>
+
+
+    <div class="details">
+
+
+        <h2>
+            Employee Details
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>Employee Name</strong>
+
+            <span id="name"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Employee ID</strong>
+
+            <span id="employeeId"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Department</strong>
+
+            <span id="department"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Evaluation Period</strong>
+
+            <span id="period"></span>
+
+        </div>
+
+
+        <h2>
+            Performance Ratings
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>Quality of Work</strong>
+
+            <span id="quality"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Productivity</strong>
+
+            <span id="productivity"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Communication</strong>
+
+            <span id="communication"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Teamwork</strong>
+
+            <span id="teamwork"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>Problem Solving</strong>
+
+            <span id="problemSolving"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Score -->
+
+    <div class="score-box">
+
+
+        <div class="score">
+
+            <h3>
+                Total Score
+            </h3>
+
+            <p id="totalScore"></p>
+
+            <small>
+                Out of 25
+            </small>
+
+        </div>
+
+
+        <div class="score">
+
+            <h3>
+                Average
+            </h3>
+
+            <p id="average"></p>
+
+            <small>
+                Out of 5
+            </small>
+
+        </div>
+
+
+        <div class="score">
+
+            <h3>
+                Performance
+            </h3>
+
+            <p id="grade"></p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Comments -->
+
+    <div class="comments">
+
+        <strong>
+            Manager Comments:
+        </strong>
+
+        <br><br>
+
+        <span id="comments"></span>
+
+    </div>
+
+
+    <button onclick="goBack()">
+        Evaluate Another Employee
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get saved evaluation data
+    */
+
+    let data =
+        JSON.parse(
+
+            localStorage.getItem(
+                "employeeEvaluation"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("name")
+            .innerHTML = data.name;
+
+
+        document.getElementById("employeeId")
+            .innerHTML = data.employeeId;
+
+
+        document.getElementById("department")
+            .innerHTML = data.department;
+
+
+        document.getElementById("period")
+            .innerHTML = data.period;
+
+
+        document.getElementById("quality")
+            .innerHTML =
+            data.quality + " / 5";
+
+
+        document.getElementById("productivity")
+            .innerHTML =
+            data.productivity + " / 5";
+
+
+        document.getElementById("communication")
+            .innerHTML =
+            data.communication + " / 5";
+
+
+        document.getElementById("teamwork")
+            .innerHTML =
+            data.teamwork + " / 5";
+
+
+        document.getElementById("problemSolving")
+            .innerHTML =
+            data.problemSolving + " / 5";
+
+
+        document.getElementById("totalScore")
+            .innerHTML =
+            data.totalScore;
+
+
+        document.getElementById("average")
+            .innerHTML =
+            data.average;
+
+
+        document.getElementById("grade")
+            .innerHTML =
+            data.grade;
+
+
+        document.getElementById("comments")
+            .innerHTML =
+            data.comments;
+
+    }
+
+
+    /*
+        Go back to Page 1
+    */
+
+    function goBack() {
+
+        window.location.href =
+            "employee-performance.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
