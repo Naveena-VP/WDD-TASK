@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Registration System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            /* Unique Lavender-Pink Background */
+            background-color: #f6e6f7;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+
+            margin: 40px auto;
+
+            background-color: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #8e4585;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #8e4585;
+
+            border-bottom: 2px solid #e8c8e5;
+
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+
+            font-weight: bold;
+
+            margin-top: 14px;
+
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #aaa;
+
+            border-radius: 5px;
+
+            box-sizing: border-box;
+
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 80px;
+
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+
+            border-color: #8e4585;
+        }
+
+        .row {
+            display: flex;
+
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .gender {
+            display: flex;
+
+            gap: 30px;
+        }
+
+        .gender label {
+            font-weight: normal;
+        }
+
+        .gender input {
+            width: auto;
+
+            margin-right: 5px;
+        }
+
+        .customer-type {
+            display: flex;
+
+            gap: 30px;
+        }
+
+        .customer-type label {
+            font-weight: normal;
+        }
+
+        .customer-type input {
+            width: auto;
+
+            margin-right: 5px;
+        }
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 11px 30px;
+
+            background-color: #8e4585;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6d3266;
+        }
+
+        #result {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            line-height: 1.8;
+
+            display: none;
+        }
+
+        .success {
+            display: block !important;
+
+            background-color: #e8f5e9;
+
+            color: #2e7d32;
+
+            border: 1px solid #a5d6a7;
+        }
+
+        .error {
+            display: block !important;
+
+            background-color: #ffebee;
+
+            color: #c62828;
+
+            border: 1px solid #ef9a9a;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+            .gender,
+            .customer-type {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>Customer Registration System</h1>
+
+    <p class="subtitle">
+        Register your details to create a customer account
+    </p>
+
+
+    <form id="customerForm">
+
+
+        <!-- Personal Information -->
+
+        <div class="section">
+
+            <h2>Personal Information</h2>
+
+
+            <label>Customer Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter customer name"
+            >
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>Customer ID</label>
+
+                    <input
+                        type="text"
+                        id="customerId"
+                        placeholder="Enter customer ID"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>Date of Birth</label>
+
+                    <input
+                        type="date"
+                        id="dob"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>Gender</label>
+
+            <div class="gender">
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                    >
+
+                    Male
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                    >
+
+                    Female
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Other"
+                    >
+
+                    Other
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="section">
+
+            <h2>Contact Information</h2>
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email address"
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10 digit phone number"
+            >
+
+
+            <label>Address</label>
+
+            <textarea
+                id="address"
+                placeholder="Enter your address"
+            ></textarea>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>City</label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter city"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>State</label>
+
+                    <select id="state">
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                        <option value="Tamil Nadu">
+                            Tamil Nadu
+                        </option>
+
+                        <option value="Kerala">
+                            Kerala
+                        </option>
+
+                        <option value="Karnataka">
+                            Karnataka
+                        </option>
+
+                        <option value="Andhra Pradesh">
+                            Andhra Pradesh
+                        </option>
+
+                        <option value="Telangana">
+                            Telangana
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Customer Details -->
+
+        <div class="section">
+
+            <h2>Customer Details</h2>
+
+
+            <label>Customer Type</label>
+
+            <div class="customer-type">
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="customerType"
+                        value="New Customer"
+                    >
+
+                    New Customer
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="customerType"
+                        value="Existing Customer"
+                    >
+
+                    Existing Customer
+
+                </label>
+
+            </div>
+
+
+            <label>Service Required</label>
+
+            <select id="service">
+
+                <option value="">
+                    Select Service
+                </option>
+
+                <option value="Account Opening">
+                    Account Opening
+                </option>
+
+                <option value="Product Purchase">
+                    Product Purchase
+                </option>
+
+                <option value="Customer Support">
+                    Customer Support
+                </option>
+
+                <option value="Online Service">
+                    Online Service
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button type="submit">
+            Register Customer
+        </button>
+
+
+    </form>
+
+
+    <div id="result"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("customerForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        let customerId =
+            document.getElementById("customerId")
+            .value.trim();
+
+
+        let dob =
+            document.getElementById("dob")
+            .value;
+
+
+        let email =
+            document.getElementById("email")
+            .value.trim();
+
+
+        let phone =
+            document.getElementById("phone")
+            .value.trim();
+
+
+        let address =
+            document.getElementById("address")
+            .value.trim();
+
+
+        let city =
+            document.getElementById("city")
+            .value.trim();
+
+
+        let state =
+            document.getElementById("state")
+            .value;
+
+
+        let service =
+            document.getElementById("service")
+            .value;
+
+
+        let gender =
+            document.querySelector(
+                'input[name="gender"]:checked'
+            );
+
+
+        let customerType =
+            document.querySelector(
+                'input[name="customerType"]:checked'
+            );
+
+
+        let result =
+            document.getElementById("result");
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter customer name");
+        }
+
+
+        if (customerId === "") {
+            errors.push("Enter customer ID");
+        }
+
+
+        if (dob === "") {
+            errors.push("Select date of birth");
+        }
+
+
+        if (!gender) {
+            errors.push("Select gender");
+        }
+
+
+        if (email === "") {
+            errors.push("Enter email");
+        }
+
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+            errors.push(
+                "Enter valid 10 digit phone number"
+            );
+        }
+
+
+        if (address === "") {
+            errors.push("Enter address");
+        }
+
+
+        if (city === "") {
+            errors.push("Enter city");
+        }
+
+
+        if (state === "") {
+            errors.push("Select state");
+        }
+
+
+        if (!customerType) {
+            errors.push("Select customer type");
+        }
+
+
+        if (service === "") {
+            errors.push("Select service");
+        }
+
+
+        if (errors.length > 0) {
+
+            result.className = "error";
+
+            result.innerHTML =
+                "<strong>Registration Failed</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+        }
+
+
+        result.className = "success";
+
+
+        result.innerHTML =
+
+            "<strong>Customer Registration Successful!</strong>" +
+
+            "<br><br>" +
+
+            "Customer Name : " + name +
+
+            "<br>" +
+
+            "Customer ID : " + customerId +
+
+            "<br>" +
+
+            "Date of Birth : " + dob +
+
+            "<br>" +
+
+            "Gender : " + gender.value +
+
+            "<br>" +
+
+            "Email : " + email +
+
+            "<br>" +
+
+            "Phone : " + phone +
+
+            "<br>" +
+
+            "Address : " + address +
+
+            "<br>" +
+
+            "City : " + city +
+
+            "<br>" +
+
+            "State : " + state +
+
+            "<br>" +
+
+            "Customer Type : " +
+            customerType.value +
+
+            "<br>" +
+
+            "Service : " + service;
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
