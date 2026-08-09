@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Registration System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f5f3;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            background-color: #287d78;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 70px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #287d78;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #287d78;
+            border-bottom: 2px solid #c6e3df;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 85px;
+            resize: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #287d78;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .info {
+            margin-top: 18px;
+            padding: 13px;
+            background-color: #f0faf8;
+            border-left: 4px solid #287d78;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background-color: #287d78;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d625e;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="icon">
+        +
+    </div>
+
+
+    <h1>
+        Patient Registration System
+    </h1>
+
+
+    <p class="subtitle">
+        Register patient information securely
+    </p>
+
+
+    <form id="patientForm">
+
+
+        <!-- Personal Information -->
+
+        <div class="section">
+
+            <h2>
+                Personal Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Patient Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="patientName"
+                        placeholder="Enter patient name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dob"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        min="1"
+                        max="120"
+                        placeholder="Enter age"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Gender
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Blood Group
+            </label>
+
+            <select id="bloodGroup">
+
+                <option value="">
+                    Select Blood Group
+                </option>
+
+                <option value="A+">
+                    A+
+                </option>
+
+                <option value="A-">
+                    A-
+                </option>
+
+                <option value="B+">
+                    B+
+                </option>
+
+                <option value="B-">
+                    B-
+                </option>
+
+                <option value="AB+">
+                    AB+
+                </option>
+
+                <option value="AB-">
+                    AB-
+                </option>
+
+                <option value="O+">
+                    O+
+                </option>
+
+                <option value="O-">
+                    O-
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="section">
+
+            <h2>
+                Contact Information
+            </h2>
+
+
+            <div class="row">
+
+                <div>
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        maxlength="10"
+                        placeholder="Enter 10-digit phone number"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email address"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                id="address"
+                placeholder="Enter complete address"
+            ></textarea>
+
+        </div>
+
+
+        <!-- Emergency Information -->
+
+        <div class="section">
+
+            <h2>
+                Emergency Information
+            </h2>
+
+
+            <label>
+                Emergency Contact Name
+            </label>
+
+            <input
+                type="text"
+                id="emergencyName"
+                placeholder="Enter emergency contact name"
+            >
+
+
+            <label>
+                Emergency Contact Number
+            </label>
+
+            <input
+                type="tel"
+                id="emergencyPhone"
+                maxlength="10"
+                placeholder="Enter emergency contact number"
+            >
+
+
+            <label>
+                Reason for Visit
+            </label>
+
+            <textarea
+                id="reason"
+                placeholder="Enter reason for visit"
+            ></textarea>
+
+
+            <div class="info">
+
+                <strong>
+                    Registration Notice
+                </strong>
+
+                <br>
+
+                Please provide accurate information while
+                registering the patient. This webpage is
+                created for educational/demo purposes.
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Register Patient
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("patientForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        let patientName =
+            document.getElementById("patientName")
+            .value.trim();
+
+
+        let dob =
+            document.getElementById("dob")
+            .value;
+
+
+        let age =
+            document.getElementById("age")
+            .value;
+
+
+        let gender =
+            document.getElementById("gender")
+            .value;
+
+
+        let bloodGroup =
+            document.getElementById("bloodGroup")
+            .value;
+
+
+        let phone =
+            document.getElementById("phone")
+            .value.trim();
+
+
+        let email =
+            document.getElementById("email")
+            .value.trim();
+
+
+        let address =
+            document.getElementById("address")
+            .value.trim();
+
+
+        let emergencyName =
+            document.getElementById("emergencyName")
+            .value.trim();
+
+
+        let emergencyPhone =
+            document.getElementById("emergencyPhone")
+            .value.trim();
+
+
+        let reason =
+            document.getElementById("reason")
+            .value.trim();
+
+
+        let errors = [];
+
+
+        if (patientName === "") {
+
+            errors.push(
+                "Enter patient name"
+            );
+
+        }
+
+
+        if (dob === "") {
+
+            errors.push(
+                "Select date of birth"
+            );
+
+        }
+
+
+        if (
+            age === "" ||
+            age < 1 ||
+            age > 120
+        ) {
+
+            errors.push(
+                "Enter a valid age"
+            );
+
+        }
+
+
+        if (gender === "") {
+
+            errors.push(
+                "Select gender"
+            );
+
+        }
+
+
+        if (bloodGroup === "") {
+
+            errors.push(
+                "Select blood group"
+            );
+
+        }
+
+
+        if (
+            !/^[0-9]{10}$/.test(phone)
+        ) {
+
+            errors.push(
+                "Enter a valid 10-digit phone number"
+            );
+
+        }
+
+
+        if (
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        ) {
+
+            errors.push(
+                "Enter a valid email address"
+            );
+
+        }
+
+
+        if (address === "") {
+
+            errors.push(
+                "Enter address"
+            );
+
+        }
+
+
+        if (emergencyName === "") {
+
+            errors.push(
+                "Enter emergency contact name"
+            );
+
+        }
+
+
+        if (
+            !/^[0-9]{10}$/.test(emergencyPhone)
+        ) {
+
+            errors.push(
+                "Enter a valid emergency contact number"
+            );
+
+        }
+
+
+        if (reason === "") {
+
+            errors.push(
+                "Enter reason for visit"
+            );
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Generate Registration ID
+        */
+
+        let registrationId =
+            "PAT" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        /*
+            Format Date of Birth
+        */
+
+        let dobObject =
+            new Date(dob);
+
+
+        let formattedDob =
+            dobObject.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+
+        /*
+            Store patient information
+        */
+
+        let patientData = {
+
+            registrationId:
+                registrationId,
+
+            patientName:
+                patientName,
+
+            dob:
+                formattedDob,
+
+            age:
+                age,
+
+            gender:
+                gender,
+
+            bloodGroup:
+                bloodGroup,
+
+            phone:
+                phone,
+
+            email:
+                email,
+
+            address:
+                address,
+
+            emergencyName:
+                emergencyName,
+
+            emergencyPhone:
+                emergencyPhone,
+
+            reason:
+                reason,
+
+            status:
+                "Registration Completed"
+
+        };
+
+
+        sessionStorage.setItem(
+
+            "patientRegistration",
+
+            JSON.stringify(patientData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "patient-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
