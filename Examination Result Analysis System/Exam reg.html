@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Examination Result Analysis System</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f5f2;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #26736b;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #26736b;
+            border-bottom: 2px solid #b9ded8;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #26736b;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .mark-note {
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #f0faf8;
+            border-left: 4px solid #26736b;
+            color: #555;
+            font-size: 14px;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #26736b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d5953;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>
+        Examination Result Analysis System
+    </h1>
+
+
+    <p class="subtitle">
+        Enter student details and examination marks
+    </p>
+
+
+    <form id="resultForm">
+
+
+        <!-- Student Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Student Information
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter student name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Register Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerNo"
+                        placeholder="Example: 24CS001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Class / Course
+                    </label>
+
+                    <input
+                        type="text"
+                        id="course"
+                        placeholder="Example: B.Sc Computer Science"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Semester
+                    </label>
+
+                    <select id="semester">
+
+                        <option value="">
+                            Select Semester
+                        </option>
+
+                        <option value="Semester 1">
+                            Semester 1
+                        </option>
+
+                        <option value="Semester 2">
+                            Semester 2
+                        </option>
+
+                        <option value="Semester 3">
+                            Semester 3
+                        </option>
+
+                        <option value="Semester 4">
+                            Semester 4
+                        </option>
+
+                        <option value="Semester 5">
+                            Semester 5
+                        </option>
+
+                        <option value="Semester 6">
+                            Semester 6
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Subject Marks -->
+
+        <div class="section">
+
+
+            <h2>
+                Subject Marks
+            </h2>
+
+
+            <div class="mark-note">
+
+                Enter marks between
+                <strong>0 and 100</strong>
+                for each subject.
+
+            </div>
+
+
+            <label>
+                English
+            </label>
+
+            <input
+                type="number"
+                id="english"
+                placeholder="Enter marks"
+                min="0"
+                max="100"
+            >
+
+
+            <label>
+                Mathematics
+            </label>
+
+            <input
+                type="number"
+                id="mathematics"
+                placeholder="Enter marks"
+                min="0"
+                max="100"
+            >
+
+
+            <label>
+                Computer Science
+            </label>
+
+            <input
+                type="number"
+                id="computer"
+                placeholder="Enter marks"
+                min="0"
+                max="100"
+            >
+
+
+            <label>
+                Database Management System
+            </label>
+
+            <input
+                type="number"
+                id="dbms"
+                placeholder="Enter marks"
+                min="0"
+                max="100"
+            >
+
+
+            <label>
+                Python Programming
+            </label>
+
+            <input
+                type="number"
+                id="python"
+                placeholder="Enter marks"
+                min="0"
+                max="100"
+            >
+
+
+        </div>
+
+
+        <button type="submit">
+            Analyze Result
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("resultForm")
+    .addEventListener("submit", function(event) {
+
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        let registerNo =
+            document.getElementById("registerNo")
+            .value.trim();
+
+
+        let course =
+            document.getElementById("course")
+            .value.trim();
+
+
+        let semester =
+            document.getElementById("semester")
+            .value;
+
+
+        let english =
+            Number(
+                document.getElementById("english").value
+            );
+
+
+        let mathematics =
+            Number(
+                document.getElementById("mathematics").value
+            );
+
+
+        let computer =
+            Number(
+                document.getElementById("computer").value
+            );
+
+
+        let dbms =
+            Number(
+                document.getElementById("dbms").value
+            );
+
+
+        let python =
+            Number(
+                document.getElementById("python").value
+            );
+
+
+        let errors = [];
+
+
+        if (name === "") {
+            errors.push("Enter student name");
+        }
+
+
+        if (registerNo === "") {
+            errors.push("Enter register number");
+        }
+
+
+        if (course === "") {
+            errors.push("Enter class or course");
+        }
+
+
+        if (semester === "") {
+            errors.push("Select semester");
+        }
+
+
+        let marks = [
+            english,
+            mathematics,
+            computer,
+            dbms,
+            python
+        ];
+
+
+        let subjectNames = [
+            "English",
+            "Mathematics",
+            "Computer Science",
+            "Database Management System",
+            "Python Programming"
+        ];
+
+
+        for (let i = 0; i < marks.length; i++) {
+
+            if (
+                document.getElementById(
+                    [
+                        "english",
+                        "mathematics",
+                        "computer",
+                        "dbms",
+                        "python"
+                    ][i]
+                ).value === ""
+            ) {
+
+                errors.push(
+                    "Enter marks for " +
+                    subjectNames[i]
+                );
+
+            }
+
+            else if (
+                marks[i] < 0 ||
+                marks[i] > 100
+            ) {
+
+                errors.push(
+                    subjectNames[i] +
+                    " marks must be between 0 and 100"
+                );
+
+            }
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+                "<strong>Please correct the following:</strong>" +
+                "<br><br>" +
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Calculate Total
+        */
+
+        let total =
+            english +
+            mathematics +
+            computer +
+            dbms +
+            python;
+
+
+        /*
+            Calculate Average
+        */
+
+        let average =
+            total / 5;
+
+
+        /*
+            Calculate Percentage
+        */
+
+        let percentage =
+            (total / 500) * 100;
+
+
+        /*
+            Check Pass / Fail
+
+            Each subject must have
+            at least 35 marks.
+        */
+
+        let passed =
+            english >= 35 &&
+            mathematics >= 35 &&
+            computer >= 35 &&
+            dbms >= 35 &&
+            python >= 35;
+
+
+        let status =
+            passed ? "PASS" : "FAIL";
+
+
+        /*
+            Grade Calculation
+        */
+
+        let grade;
+
+
+        if (!passed) {
+
+            grade = "F";
+
+        }
+
+        else if (percentage >= 90) {
+
+            grade = "A+";
+
+        }
+
+        else if (percentage >= 80) {
+
+            grade = "A";
+
+        }
+
+        else if (percentage >= 70) {
+
+            grade = "B+";
+
+        }
+
+        else if (percentage >= 60) {
+
+            grade = "B";
+
+        }
+
+        else if (percentage >= 50) {
+
+            grade = "C";
+
+        }
+
+        else {
+
+            grade = "D";
+
+        }
+
+
+        /*
+            Store result data
+        */
+
+        let resultData = {
+
+            name: name,
+
+            registerNo: registerNo,
+
+            course: course,
+
+            semester: semester,
+
+            english: english,
+
+            mathematics: mathematics,
+
+            computer: computer,
+
+            dbms: dbms,
+
+            python: python,
+
+            total: total,
+
+            average: average.toFixed(2),
+
+            percentage: percentage.toFixed(2),
+
+            grade: grade,
+
+            status: status
+
+        };
+
+
+        localStorage.setItem(
+            "examResult",
+            JSON.stringify(resultData)
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "result-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

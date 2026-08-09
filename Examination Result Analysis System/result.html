@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Result Analysis Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e8f5f2;
+        }
+
+
+        .container {
+            width: 700px;
+            max-width: 90%;
+
+            margin: 50px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #26736b;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #26736b;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .details {
+            background-color: #f3faf8;
+
+            border: 1px solid #b9ded8;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #26736b;
+
+            border-bottom: 2px solid #b9ded8;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+        }
+
+
+        .score-box {
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+
+        .score {
+            flex: 1;
+
+            text-align: center;
+
+            padding: 15px;
+
+            background-color: #e4f3f0;
+
+            border-radius: 8px;
+        }
+
+
+        .score h3 {
+            margin: 5px;
+
+            color: #26736b;
+        }
+
+
+        .score p {
+            font-size: 24px;
+
+            font-weight: bold;
+
+            margin: 8px;
+
+            color: #1d5953;
+        }
+
+
+        .status {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            text-align: center;
+
+            border-radius: 8px;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+
+        .pass {
+            background-color: #dff3e8;
+
+            color: #26734d;
+        }
+
+
+        .fail {
+            background-color: #ffe4e4;
+
+            color: #b52b2b;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 25px;
+
+            background-color: #26736b;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #1d5953;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+
+            .detail span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+            }
+
+
+            .score-box {
+                display: block;
+            }
+
+
+            .score {
+                margin-bottom: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Result Analysis Completed!
+    </h1>
+
+
+    <p class="message">
+        Examination result has been analyzed successfully.
+    </p>
+
+
+    <!-- Student Details -->
+
+    <div class="details">
+
+
+        <h2>
+            Student Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Student Name
+            </strong>
+
+            <span id="name"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Register Number
+            </strong>
+
+            <span id="registerNo"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Class / Course
+            </strong>
+
+            <span id="course"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Semester
+            </strong>
+
+            <span id="semester"></span>
+
+        </div>
+
+
+        <!-- Subject Marks -->
+
+        <h2>
+            Subject-wise Marks
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                English
+            </strong>
+
+            <span id="english"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Mathematics
+            </strong>
+
+            <span id="mathematics"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Computer Science
+            </strong>
+
+            <span id="computer"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Database Management System
+            </strong>
+
+            <span id="dbms"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Python Programming
+            </strong>
+
+            <span id="python"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Result Summary -->
+
+    <div class="score-box">
+
+
+        <div class="score">
+
+            <h3>
+                Total
+            </h3>
+
+            <p id="total"></p>
+
+            <small>
+                Out of 500
+            </small>
+
+        </div>
+
+
+        <div class="score">
+
+            <h3>
+                Average
+            </h3>
+
+            <p id="average"></p>
+
+            <small>
+                Out of 100
+            </small>
+
+        </div>
+
+
+        <div class="score">
+
+            <h3>
+                Percentage
+            </h3>
+
+            <p id="percentage"></p>
+
+            <small>
+                %
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Grade -->
+
+    <div class="score-box">
+
+
+        <div class="score">
+
+            <h3>
+                Grade
+            </h3>
+
+            <p id="grade"></p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Pass / Fail -->
+
+    <div id="statusBox"
+         class="status">
+
+        Result:
+        <span id="status"></span>
+
+    </div>
+
+
+    <button onclick="goBack()">
+        Analyze Another Result
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get saved result data
+    */
+
+    let data =
+        JSON.parse(
+
+            localStorage.getItem(
+                "examResult"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("name")
+            .innerHTML = data.name;
+
+
+        document.getElementById("registerNo")
+            .innerHTML = data.registerNo;
+
+
+        document.getElementById("course")
+            .innerHTML = data.course;
+
+
+        document.getElementById("semester")
+            .innerHTML = data.semester;
+
+
+        document.getElementById("english")
+            .innerHTML =
+            data.english + " / 100";
+
+
+        document.getElementById("mathematics")
+            .innerHTML =
+            data.mathematics + " / 100";
+
+
+        document.getElementById("computer")
+            .innerHTML =
+            data.computer + " / 100";
+
+
+        document.getElementById("dbms")
+            .innerHTML =
+            data.dbms + " / 100";
+
+
+        document.getElementById("python")
+            .innerHTML =
+            data.python + " / 100";
+
+
+        document.getElementById("total")
+            .innerHTML =
+            data.total;
+
+
+        document.getElementById("average")
+            .innerHTML =
+            data.average;
+
+
+        document.getElementById("percentage")
+            .innerHTML =
+            data.percentage;
+
+
+        document.getElementById("grade")
+            .innerHTML =
+            data.grade;
+
+
+        document.getElementById("status")
+            .innerHTML =
+            data.status;
+
+
+        /*
+            Change status box
+        */
+
+        let statusBox =
+            document.getElementById(
+                "statusBox"
+            );
+
+
+        if (data.status === "PASS") {
+
+            statusBox.classList.add("pass");
+
+        }
+
+        else {
+
+            statusBox.classList.add("fail");
+
+        }
+
+    }
+
+
+    /*
+        Return to Page 1
+    */
+
+    function goBack() {
+
+        window.location.href =
+            "exam-result.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
