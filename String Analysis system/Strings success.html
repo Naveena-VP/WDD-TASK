@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>String Analysis Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3eaff;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 92%;
+            margin: 45px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            border-radius: 50%;
+            background-color: #7148a3;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #7148a3;
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .analysis-id {
+            text-align: center;
+            background-color: #f4edfa;
+            padding: 15px;
+            border-radius: 7px;
+            color: #7148a3;
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .original-text {
+            background-color: #faf8fc;
+            border: 1px solid #d8c7eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .original-text h2 {
+            color: #7148a3;
+            margin-top: 0;
+        }
+
+        .text-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .results {
+            background-color: #faf8fc;
+            border: 1px solid #d8c7eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .results h2 {
+            text-align: center;
+            color: #7148a3;
+            border-bottom: 2px solid #d8c7eb;
+            padding-bottom: 10px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .result-row strong {
+            color: #555;
+        }
+
+        .result-row span {
+            color: #7148a3;
+            font-weight: bold;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            background-color: #e1f3e8;
+            color: #26734d;
+            border-radius: 7px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 13px;
+            background-color: #fff8e1;
+            border-left: 4px solid #d39e00;
+            color: #665500;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 28px;
+            background-color: #7148a3;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #593680;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .result-row {
+                display: block;
+            }
+
+            .result-row span {
+                display: block;
+                margin-top: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        String Analysis Completed!
+    </h1>
+
+
+    <p class="message">
+        Your string has been analyzed successfully.
+    </p>
+
+
+    <div class="analysis-id">
+
+        Analysis ID:
+        <span id="analysisId"></span>
+
+    </div>
+
+
+    <!-- Original Text -->
+
+    <div class="original-text">
+
+
+        <h2>
+            Entered String
+        </h2>
+
+
+        <div class="text-box"
+             id="originalText">
+        </div>
+
+
+    </div>
+
+
+    <!-- Analysis Results -->
+
+    <div class="results">
+
+
+        <h2>
+            Analysis Results
+        </h2>
+
+
+        <div class="result-row">
+
+            <strong>
+                Total Characters
+            </strong>
+
+            <span id="totalCharacters"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Characters Without Spaces
+            </strong>
+
+            <span id="charactersWithoutSpaces"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Number of Words
+            </strong>
+
+            <span id="wordCount"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Number of Vowels
+            </strong>
+
+            <span id="vowels"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Number of Consonants
+            </strong>
+
+            <span id="consonants"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Number of Digits
+            </strong>
+
+            <span id="digits"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Number of Spaces
+            </strong>
+
+            <span id="spaces"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Special Characters
+            </strong>
+
+            <span id="specialCharacters"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Uppercase Letters
+            </strong>
+
+            <span id="uppercase"></span>
+
+        </div>
+
+
+        <div class="result-row">
+
+            <strong>
+                Lowercase Letters
+            </strong>
+
+            <span id="lowercase"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="status">
+
+        ✓ Analysis Successfully Completed
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Note:</strong>
+
+        This String Analysis System is created for
+        educational purposes. The analysis is performed
+        directly in the browser.
+
+    </div>
+
+
+    <button onclick="newAnalysis()">
+
+        Analyze Another String
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get analysis data
+        from Page 1
+    */
+
+    let data =
+        JSON.parse(
+
+            sessionStorage.getItem(
+                "stringAnalysis"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("analysisId")
+            .innerHTML =
+            data.analysisId;
+
+
+        /*
+            textContent is used so that
+            the entered text is displayed
+            safely as normal text.
+        */
+
+        document.getElementById("originalText")
+            .textContent =
+            data.originalText;
+
+
+        document.getElementById("totalCharacters")
+            .innerHTML =
+            data.totalCharacters;
+
+
+        document.getElementById("charactersWithoutSpaces")
+            .innerHTML =
+            data.charactersWithoutSpaces;
+
+
+        document.getElementById("wordCount")
+            .innerHTML =
+            data.wordCount;
+
+
+        document.getElementById("vowels")
+            .innerHTML =
+            data.vowels;
+
+
+        document.getElementById("consonants")
+            .innerHTML =
+            data.consonants;
+
+
+        document.getElementById("digits")
+            .innerHTML =
+            data.digits;
+
+
+        document.getElementById("spaces")
+            .innerHTML =
+            data.spaces;
+
+
+        document.getElementById("specialCharacters")
+            .innerHTML =
+            data.specialCharacters;
+
+
+        document.getElementById("uppercase")
+            .innerHTML =
+            data.uppercase;
+
+
+        document.getElementById("lowercase")
+            .innerHTML =
+            data.lowercase;
+
+    }
+
+
+    /*
+        Analyze another string
+    */
+
+    function newAnalysis() {
+
+        sessionStorage.removeItem(
+            "stringAnalysis"
+        );
+
+
+        window.location.href =
+            "string-analysis.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
