@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Salary Processing Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff0e6;
+        }
+
+
+        .container {
+            width: 700px;
+            max-width: 90%;
+
+            margin: 50px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #a0522d;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #a0522d;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .details {
+            background-color: #fff8f4;
+
+            border: 1px solid #f1c7ad;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #a0522d;
+
+            border-bottom: 2px solid #f1c7ad;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+        }
+
+
+        .earnings {
+            margin-top: 20px;
+        }
+
+
+        .deductions {
+            margin-top: 20px;
+        }
+
+
+        .net-salary {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            background-color: #ffe0cc;
+
+            border-radius: 8px;
+
+            color: #7f3f24;
+        }
+
+
+        .net-salary p {
+            margin: 5px;
+
+            font-size: 16px;
+        }
+
+
+        .net-salary h2 {
+            margin: 8px;
+
+            font-size: 30px;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 25px;
+
+            background-color: #a0522d;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #7f3f24;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail {
+                display: block;
+            }
+
+            .detail span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Salary Processing Completed!
+    </h1>
+
+
+    <p class="message">
+        Employee salary has been processed successfully.
+    </p>
+
+
+    <!-- Employee Details -->
+
+    <div class="details">
+
+
+        <h2>
+            Employee Details
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Employee Name
+            </strong>
+
+            <span id="name"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Employee ID
+            </strong>
+
+            <span id="employeeId"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Department
+            </strong>
+
+            <span id="department"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Salary Month
+            </strong>
+
+            <span id="month"></span>
+
+        </div>
+
+
+        <!-- Earnings -->
+
+        <div class="earnings">
+
+
+            <h2>
+                Earnings
+            </h2>
+
+
+            <div class="detail">
+
+                <strong>
+                    Basic Salary
+                </strong>
+
+                <span>
+                    ₹<span id="basicSalary"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    HRA
+                </strong>
+
+                <span>
+                    ₹<span id="hra"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Allowance
+                </strong>
+
+                <span>
+                    ₹<span id="allowance"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Bonus
+                </strong>
+
+                <span>
+                    ₹<span id="bonus"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Other Earnings
+                </strong>
+
+                <span>
+                    ₹<span id="other"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Gross Salary
+                </strong>
+
+                <span>
+                    ₹<span id="grossSalary"></span>
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Deductions -->
+
+        <div class="deductions">
+
+
+            <h2>
+                Deductions
+            </h2>
+
+
+            <div class="detail">
+
+                <strong>
+                    PF Deduction
+                </strong>
+
+                <span>
+                    ₹<span id="pf"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Tax Deduction
+                </strong>
+
+                <span>
+                    ₹<span id="tax"></span>
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <strong>
+                    Total Deduction
+                </strong>
+
+                <span>
+                    ₹<span id="totalDeduction"></span>
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Net Salary -->
+
+    <div class="net-salary">
+
+        <p>
+            Net Salary
+        </p>
+
+        <h2>
+            ₹<span id="netSalary"></span>
+        </h2>
+
+    </div>
+
+
+    <button onclick="goBack()">
+        Process Another Salary
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get salary data from Page 1
+    */
+
+    let data =
+        JSON.parse(
+
+            localStorage.getItem(
+                "employeeSalary"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("name")
+            .innerHTML = data.name;
+
+
+        document.getElementById("employeeId")
+            .innerHTML = data.employeeId;
+
+
+        document.getElementById("department")
+            .innerHTML = data.department;
+
+
+        document.getElementById("month")
+            .innerHTML = data.month;
+
+
+        document.getElementById("basicSalary")
+            .innerHTML = data.basicSalary;
+
+
+        document.getElementById("hra")
+            .innerHTML = data.hra;
+
+
+        document.getElementById("allowance")
+            .innerHTML = data.allowance;
+
+
+        document.getElementById("bonus")
+            .innerHTML = data.bonus;
+
+
+        document.getElementById("other")
+            .innerHTML = data.other;
+
+
+        document.getElementById("grossSalary")
+            .innerHTML = data.grossSalary;
+
+
+        document.getElementById("pf")
+            .innerHTML = data.pf;
+
+
+        document.getElementById("tax")
+            .innerHTML = data.tax;
+
+
+        document.getElementById("totalDeduction")
+            .innerHTML =
+            data.totalDeduction;
+
+
+        document.getElementById("netSalary")
+            .innerHTML =
+            data.netSalary;
+
+    }
+
+
+    /*
+        Return to Page 1
+    */
+
+    function goBack() {
+
+        window.location.href =
+            "employee-salary.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
