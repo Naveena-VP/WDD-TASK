@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Premium Calculation Completed</title>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eeeafa;
+        }
+
+
+        .container {
+            width: 700px;
+            max-width: 90%;
+
+            margin: 50px auto;
+
+            background-color: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.15);
+        }
+
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background-color: #665191;
+
+            color: white;
+
+            font-size: 42px;
+
+            text-align: center;
+
+            line-height: 70px;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #665191;
+
+            margin-top: 20px;
+        }
+
+
+        .message {
+            text-align: center;
+
+            color: #555;
+
+            margin-bottom: 25px;
+        }
+
+
+        .details {
+            background-color: #f7f4fc;
+
+            border: 1px solid #d8d0ed;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .details h2 {
+            text-align: center;
+
+            color: #665191;
+
+            border-bottom: 2px solid #d8d0ed;
+
+            padding-bottom: 10px;
+        }
+
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .detail strong {
+            color: #555;
+        }
+
+
+        .detail span {
+            text-align: right;
+
+            color: #333;
+        }
+
+
+        .premium-box {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background-color: #e9e2f7;
+
+            border-radius: 8px;
+        }
+
+
+        .premium-box h2 {
+            text-align: center;
+
+            color: #665191;
+        }
+
+
+        .premium-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid #d2c8e5;
+        }
+
+
+        .final-premium {
+            margin-top: 20px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            background-color: #665191;
+
+            color: white;
+
+            border-radius: 8px;
+        }
+
+
+        .final-premium p {
+            margin: 5px;
+
+            font-size: 16px;
+        }
+
+
+        .final-premium h2 {
+            margin: 8px;
+
+            font-size: 30px;
+        }
+
+
+        button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 12px 25px;
+
+            background-color: #665191;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        button:hover {
+            background-color: #514078;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .detail,
+            .premium-row {
+                display: block;
+            }
+
+
+            .detail span,
+            .premium-row span {
+                display: block;
+
+                text-align: left;
+
+                margin-top: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h1>
+        Premium Calculation Completed!
+    </h1>
+
+
+    <p class="message">
+        Insurance premium has been calculated successfully.
+    </p>
+
+
+    <!-- Customer Details -->
+
+    <div class="details">
+
+
+        <h2>
+            Customer Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Customer Name
+            </strong>
+
+            <span id="name"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Customer ID
+            </strong>
+
+            <span id="customerId"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Age
+            </strong>
+
+            <span id="age"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Gender
+            </strong>
+
+            <span id="gender"></span>
+
+        </div>
+
+
+        <h2>
+            Policy Information
+        </h2>
+
+
+        <div class="detail">
+
+            <strong>
+                Insurance Type
+            </strong>
+
+            <span id="insuranceType"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Coverage Amount
+            </strong>
+
+            <span>
+                ₹<span id="coverage"></span>
+            </span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Policy Term
+            </strong>
+
+            <span id="term"></span>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                Payment Frequency
+            </strong>
+
+            <span id="frequency"></span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Premium Calculation -->
+
+    <div class="premium-box">
+
+
+        <h2>
+            Premium Calculation
+        </h2>
+
+
+        <div class="premium-row">
+
+            <strong>
+                Base Premium
+            </strong>
+
+            <span>
+                ₹<span id="basePremium"></span>
+            </span>
+
+        </div>
+
+
+        <div class="premium-row">
+
+            <strong>
+                Age Adjustment
+            </strong>
+
+            <span>
+                ₹<span id="ageAmount"></span>
+            </span>
+
+        </div>
+
+
+        <div class="premium-row">
+
+            <strong>
+                Policy Term Adjustment
+            </strong>
+
+            <span>
+                ₹<span id="termAmount"></span>
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Final Premium -->
+
+    <div class="final-premium">
+
+        <p>
+            Final Annual Premium
+        </p>
+
+        <h2>
+            ₹<span id="finalPremium"></span>
+        </h2>
+
+        <p>
+            Payment Amount:
+            ₹<span id="paymentAmount"></span>
+        </p>
+
+    </div>
+
+
+    <button onclick="goBack()">
+        Calculate Another Premium
+    </button>
+
+
+</div>
+
+
+<script>
+
+
+    /*
+        Get data from Page 1
+    */
+
+    let data =
+        JSON.parse(
+
+            localStorage.getItem(
+                "insurancePremium"
+            )
+
+        );
+
+
+    if (data) {
+
+
+        document.getElementById("name")
+            .innerHTML = data.name;
+
+
+        document.getElementById("customerId")
+            .innerHTML =
+            data.customerId;
+
+
+        document.getElementById("age")
+            .innerHTML =
+            data.age;
+
+
+        document.getElementById("gender")
+            .innerHTML =
+            data.gender;
+
+
+        document.getElementById("insuranceType")
+            .innerHTML =
+            data.insuranceType;
+
+
+        document.getElementById("coverage")
+            .innerHTML =
+            data.coverage;
+
+
+        document.getElementById("term")
+            .innerHTML =
+            data.term + " Years";
+
+
+        document.getElementById("frequency")
+            .innerHTML =
+            data.frequency;
+
+
+        document.getElementById("basePremium")
+            .innerHTML =
+            data.basePremium;
+
+
+        document.getElementById("ageAmount")
+            .innerHTML =
+            data.ageAmount;
+
+
+        document.getElementById("termAmount")
+            .innerHTML =
+            data.termAmount;
+
+
+        document.getElementById("finalPremium")
+            .innerHTML =
+            data.finalPremium;
+
+
+        document.getElementById("paymentAmount")
+            .innerHTML =
+            data.paymentAmount;
+
+    }
+
+
+    /*
+        Return to Page 1
+    */
+
+    function goBack() {
+
+        window.location.href =
+            "insurance-premium.html";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

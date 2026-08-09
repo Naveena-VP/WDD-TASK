@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Insurance Premium Calculator</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eeeafa;
+        }
+
+        .container {
+            width: 750px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #665191;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #665191;
+            border-bottom: 2px solid #d8d0ed;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #665191;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        .info {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #f7f4fc;
+            border-left: 4px solid #665191;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #665191;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #514078;
+        }
+
+        #error {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .row {
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>
+        Insurance Premium Calculator
+    </h1>
+
+
+    <p class="subtitle">
+        Enter customer and policy details to calculate the premium
+    </p>
+
+
+    <form id="insuranceForm">
+
+
+        <!-- Customer Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Customer Information
+            </h2>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Customer Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter customer name"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Customer ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerId"
+                        placeholder="Example: CUST1001"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Enter age"
+                        min="18"
+                        max="80"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Gender
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Policy Information -->
+
+        <div class="section">
+
+
+            <h2>
+                Policy Information
+            </h2>
+
+
+            <label>
+                Insurance Type
+            </label>
+
+            <select id="insuranceType">
+
+                <option value="">
+                    Select Insurance Type
+                </option>
+
+                <option value="Life Insurance">
+                    Life Insurance
+                </option>
+
+                <option value="Health Insurance">
+                    Health Insurance
+                </option>
+
+                <option value="Vehicle Insurance">
+                    Vehicle Insurance
+                </option>
+
+                <option value="Travel Insurance">
+                    Travel Insurance
+                </option>
+
+            </select>
+
+
+            <div class="row">
+
+
+                <div>
+
+                    <label>
+                        Coverage Amount (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="coverage"
+                        placeholder="Enter coverage amount"
+                        min="10000"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Policy Term
+                    </label>
+
+                    <select id="term">
+
+                        <option value="">
+                            Select Term
+                        </option>
+
+                        <option value="1">
+                            1 Year
+                        </option>
+
+                        <option value="5">
+                            5 Years
+                        </option>
+
+                        <option value="10">
+                            10 Years
+                        </option>
+
+                        <option value="15">
+                            15 Years
+                        </option>
+
+                        <option value="20">
+                            20 Years
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Payment Frequency
+            </label>
+
+            <select id="frequency">
+
+                <option value="">
+                    Select Payment Frequency
+                </option>
+
+                <option value="Monthly">
+                    Monthly
+                </option>
+
+                <option value="Quarterly">
+                    Quarterly
+                </option>
+
+                <option value="Yearly">
+                    Yearly
+                </option>
+
+            </select>
+
+
+            <div class="info">
+
+                <strong>
+                    Premium Calculation:
+                </strong>
+
+                <br>
+
+                The calculator uses an example premium rate based on
+                insurance type, coverage amount, policy term and age.
+
+                <br>
+
+                This is a demonstration webpage and not an actual
+                insurance quotation.
+
+            </div>
+
+
+        </div>
+
+
+        <button type="submit">
+            Calculate Premium
+        </button>
+
+
+    </form>
+
+
+    <div id="error"></div>
+
+
+</div>
+
+
+<script>
+
+
+    document.getElementById("insuranceForm")
+    .addEventListener("submit", function(event) {
+
+
+        event.preventDefault();
+
+
+        let name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        let customerId =
+            document.getElementById("customerId")
+            .value.trim();
+
+
+        let age =
+            Number(
+                document.getElementById("age")
+                .value
+            );
+
+
+        let gender =
+            document.getElementById("gender")
+            .value;
+
+
+        let insuranceType =
+            document.getElementById("insuranceType")
+            .value;
+
+
+        let coverage =
+            Number(
+                document.getElementById("coverage")
+                .value
+            );
+
+
+        let term =
+            Number(
+                document.getElementById("term")
+                .value
+            );
+
+
+        let frequency =
+            document.getElementById("frequency")
+            .value;
+
+
+        let errors = [];
+
+
+        if (name === "") {
+
+            errors.push(
+                "Enter customer name"
+            );
+
+        }
+
+
+        if (customerId === "") {
+
+            errors.push(
+                "Enter customer ID"
+            );
+
+        }
+
+
+        if (
+            age < 18 ||
+            age > 80 ||
+            isNaN(age)
+        ) {
+
+            errors.push(
+                "Age must be between 18 and 80"
+            );
+
+        }
+
+
+        if (gender === "") {
+
+            errors.push(
+                "Select gender"
+            );
+
+        }
+
+
+        if (insuranceType === "") {
+
+            errors.push(
+                "Select insurance type"
+            );
+
+        }
+
+
+        if (
+            coverage < 10000 ||
+            isNaN(coverage)
+        ) {
+
+            errors.push(
+                "Coverage amount must be at least ₹10,000"
+            );
+
+        }
+
+
+        if (
+            term === 0 ||
+            isNaN(term)
+        ) {
+
+            errors.push(
+                "Select policy term"
+            );
+
+        }
+
+
+        if (frequency === "") {
+
+            errors.push(
+                "Select payment frequency"
+            );
+
+        }
+
+
+        let errorBox =
+            document.getElementById("error");
+
+
+        if (errors.length > 0) {
+
+            errorBox.style.display = "block";
+
+            errorBox.innerHTML =
+
+                "<strong>Please correct the following:</strong>" +
+
+                "<br><br>" +
+
+                errors.join("<br>");
+
+            return;
+
+        }
+
+
+        /*
+            Base Rate based on
+            Insurance Type
+        */
+
+        let baseRate;
+
+
+        if (insuranceType === "Life Insurance") {
+
+            baseRate = 0.02;
+
+        }
+
+        else if (insuranceType === "Health Insurance") {
+
+            baseRate = 0.025;
+
+        }
+
+        else if (insuranceType === "Vehicle Insurance") {
+
+            baseRate = 0.03;
+
+        }
+
+        else {
+
+            baseRate = 0.015;
+
+        }
+
+
+        /*
+            Calculate Base Premium
+        */
+
+        let basePremium =
+            coverage * baseRate;
+
+
+        /*
+            Age Adjustment
+        */
+
+        let ageAdjustment;
+
+
+        if (age <= 30) {
+
+            ageAdjustment = 0.00;
+
+        }
+
+        else if (age <= 45) {
+
+            ageAdjustment = 0.10;
+
+        }
+
+        else if (age <= 60) {
+
+            ageAdjustment = 0.20;
+
+        }
+
+        else {
+
+            ageAdjustment = 0.30;
+
+        }
+
+
+        let ageAmount =
+            basePremium * ageAdjustment;
+
+
+        /*
+            Term Adjustment
+        */
+
+        let termAmount =
+            basePremium *
+            (term * 0.02);
+
+
+        /*
+            Calculate Final Premium
+        */
+
+        let finalPremium =
+            basePremium +
+            ageAmount +
+            termAmount;
+
+
+        /*
+            Payment Frequency
+        */
+
+        let paymentAmount;
+
+
+        if (frequency === "Monthly") {
+
+            paymentAmount =
+                finalPremium / 12;
+
+        }
+
+        else if (frequency === "Quarterly") {
+
+            paymentAmount =
+                finalPremium / 4;
+
+        }
+
+        else {
+
+            paymentAmount =
+                finalPremium;
+
+        }
+
+
+        /*
+            Store Data
+        */
+
+        let insuranceData = {
+
+            name: name,
+
+            customerId: customerId,
+
+            age: age,
+
+            gender: gender,
+
+            insuranceType: insuranceType,
+
+            coverage: coverage.toFixed(2),
+
+            term: term,
+
+            frequency: frequency,
+
+            basePremium:
+                basePremium.toFixed(2),
+
+            ageAmount:
+                ageAmount.toFixed(2),
+
+            termAmount:
+                termAmount.toFixed(2),
+
+            finalPremium:
+                finalPremium.toFixed(2),
+
+            paymentAmount:
+                paymentAmount.toFixed(2)
+
+        };
+
+
+        localStorage.setItem(
+
+            "insurancePremium",
+
+            JSON.stringify(insuranceData)
+
+        );
+
+
+        /*
+            Open Page 2
+        */
+
+        window.location.href =
+            "insurance-success.html";
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
